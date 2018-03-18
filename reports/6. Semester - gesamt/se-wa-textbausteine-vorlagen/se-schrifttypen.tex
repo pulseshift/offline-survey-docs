@@ -1,0 +1,18 @@
+\section{\"Anderung der Schrifttypen im Dokument}
+
+Standardm\"a{\ss}ig wird in dieser Vorlage f\"ur die \"Uberschriften, die Kopf- und Fu{\ss}zeilen 
+sowie das Titelblatt eine serifenlose Schrift verwendet, w\"ahrend der Textteil in einer Serifenschrift 
+gesetzt ist.
+
+Soll das gesamte Dokument in einer \textsf{\textbf{serifenlosen Schrift}} gesetzt werden, dann ist in 
+der Konfigurationsdatei \verb+wa-konfiguration.tex+ das Kommando \newline
+\hspace*{\fill}\verb+\renewcommand{\familydefault}{\sfdefault}+\hspace*{\fill}\newline
+zu verwenden.
+
+Soll das gesamte Dokument in einer \textbf{Serifenschrift} gesetzt werden, dann ist in 
+der Konfigurationsdatei \verb+wa-konfiguration.tex+ das Kommando \newline
+\hspace*{\fill}\verb+\renewcommand{\sffamily}{\normalfont}+\hspace*{\fill}\newline
+zu verwenden. Nach dieser \"Anderung ist es nicht mehr m\"oglich, \"uber das 
+Kommando \verb+\textsf{}+ einen Textteil in einer serifenlosen Schrift zu setzen.
+
+

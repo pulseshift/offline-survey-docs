@@ -1,0 +1,27 @@
+\section{Fu{\ss}noten}
+
+\subsection{Verwendung dreistelliger Fu{\ss}noten}
+
+Bei dreistelligen Fu{\ss}noten tritt das Problem auf, dass der Abstand zwischen Fu{\ss}notennummer und folgendem Text nicht mehr ausreicht.
+Der Abstand kann wie folgt vergr\"o{\ss}ert werden:
+
+\begin{seList}
+\item
+In der Style-Datei \texttt{se-jb-footmisc.sty} wird \"uber \newline \texttt{\textbackslash{}setlength\textbackslash{}footnotemargin\{0.3cm\}} genau dieser Abstand definiert.
+\item
+\"Andert man den Wert z.\,B.\ auf 0.5cm, dann sollte es auch f\"ur dreistellige Fu{\ss}noten ausreichen.
+\end{seList}
+
+\subsection{Fu{\ss}noten in Abbildungen, Tabellen und Programmlistings}
+
+\LaTeX{} erlaubt generell nicht die Verwendung des Kommandos \verb+\footnote+ in \textsl{Gleitobjekten} (\textsl{Floats}). 
+Zu den Gleitobjekten geh\"oren \textsl{Abbildungen}, \textsl{Tabellen} und auch \textsl{Programmlistings}. In \vref{fussnote} findet ein 
+kleiner \textsl{Workaround} Anwendung, wie man doch Fu{\ss}noten in Gleitobjekten angeben kann. 
+
+\begin{seList}
+\item Mit \verb+\footnotemark+ wird in dem \verb+\caption+-Kommando die \textsl{Fu{\ss}notennummer} erzeugt.
+\item Mit dem Kommando \verb+\footnotetext+ wird au{\ss}erhalb der Umgebung, die das Gleitobjekt definiert (z.\,B. die 
+\verb+figure+-Umgebung), der Text der Fu{\ss}note festgelegt. Hierbei ist zu beachten, dass ein Gleitobjekt auf die n\"achste Seite 
+verschoben werden kann. In einem derartigen Fall sollte der Fu{\ss}notentext an einer Stelle im \LaTeX-Quelltext positioniert werden, die ebenfalls zu dieser Seite geh\"ort.\footnote{Standardm\"a{\ss}ig wird man \texttt{\textbackslash{}footnotetext} direkt hinter dem Gleitobjekt definieren, um sicherzustellen,
+dass der Fu{\ss}notentext auch der richtigen Fu{\ss}notennummer zugeordnet wird.}
+\end{seList}

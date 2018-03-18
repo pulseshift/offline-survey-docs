@@ -1,0 +1,229 @@
+% Konfigurationsdatei f\"ur die Pfaddefinitionen einlesen
+\input{se-wa-pfade}
+%
+%
+% Festlegung der Sprache: 
+\newcommand{\seWaSprache}{deutsch}
+%\newcommand{\seWaSprache}{englisch}
+
+%
+% Einlesen der .sty-Dateien
+%
+\input{\seWaPathSty/se-wa-input-styles-v098}
+
+
+%
+% Individuelle Konfiguration des Dokumentes
+%
+\input{\seWaPathText/wa-konfiguration}
+
+%
+% Definition von Abk\"urzungen, Symbolen und eventuell Glossareintr\"agen
+%
+\input{\seWaPathText/wa-abkuerzungen} 
+
+% Eigene Kommandos
+\input{se-wa-styles/sebbels-commands}
+
+%\seIstSeminararbeit{}
+
+\newcommand{\version}{0.98}
+
+% 
+% Diese Redefinition ist nur f\"ur den Anhang B der  
+% Vorlage (Hinweise zur Installation und \"Ubersetzung)
+% notwendig; f\"ur Ihre Bachelorarbeit spielt sie keine Rolle
+%
+\renewcommand{\seVorlage}{\jobname}
+
+
+\begin{document}
+\input{chapters/deckblatt}
+
+
+% Erzeugung des Titelblatts
+%
+%
+%
+\seTitelblattWissenschaftlicheArbeit[
+%hilfslinien=ja,
+%dhbwlogoSkalierung=0.5,
+%dhbwlogoDeltaX=2.4,
+%dhbwlogoDeltaY=-10,
+firmenlogo=firmenlogo,
+firmenlogoSkalierung=0.2,
+firmenlogoDeltaX=0,
+firmenlogoDeltaY=0,
+studiengang=\seWirtschaftsinformatik,
+studienrichtung=\seSoftwareEngineering,
+thema=Projekt PulseShift,
+verfasser=Sebastian Schütz Florian Finkel,
+matrikelnummer=9999999,
+kurs=WWI\,15\,SE\,A,
+firma=Ausbildungsfirma,
+% Da im Text ein Komma enthalten ist, muss der Text eingeklammert werden
+%abteilung={Wirtschaftsinformatik, Sales \& Consulting},
+abteilung={Wirtschaftsinformatik, Software Engineering},
+%studiengangsleiterin=,
+studiengangsleiter=Prof. Dr.-Ing. J\"org Baumgart,
+%studiengangsleiter=Prof. Dr. Thomas Holey,
+wissenschaftlicheBetreuerinName=Dr. Melanie Mustermann,
+wissenschaftlicheBetreuerinEmail=melanie.mustermann@musterfirma.de,
+wissenschaftlicheBetreuerinTelefon=0621/999999,
+%wissenschaftlicherBetreuerName=Prof. Dr.-Ing. J\"org Baumgart,
+%wissenschaftlicherBetreuerEmail=joerg.baumgart@dhbw-mannheim.de,
+%wissenschaftlicherBetreuerTelefon=0621/4105\,1216,
+%firmenbetreuerinName=Dipl.-Ing. Ariane Meistermann,
+%firmenbetreuerinEmail=a.meistermann@andere-musterfirma.de,
+%firmenbetreuerinTelefon=06151/88888,
+%firmenbetreuerName=,
+%firmenbetreuerEmail=,
+%firmenbetreuerTelefon=,
+bearbeitungszeitraumVon=28. November 2016,
+bearbeitungszeitraumBis=19. Februar 2017,
+%
+% Datum in englischer Schreibweise
+%bearbeitungszeitraumVon=28 November  2016,
+%bearbeitungszeitraumBis=19 February 2017,
+sperrvermerk=nein
+]
+
+
+
+% 2012-02-06 Inhaltsverzeichnis muss vor den weiteren Verzeichnisses kommen
+%
+%
+% Ausgabe des Inhaltsverzeichnisses
+%
+%
+\seInhaltsverzeichnis[%
+einrueckung=ja,
+gliederungsebenen=4
+]
+
+
+
+
+% Ausgabe der verschiedenen Verzeichnisse
+% abk: Abk\"urzungsverzeichnis
+% sym: Symbolverzeichnis
+% abb: Abbildungsverzeichnis
+% tab: Tabellenverzeichnis
+% prg: Listingverzeichnis
+% alg: Algorithmenverzeichnis
+%
+%
+% Achtung: Abk\"urzungs- und Symbolverzeichnis werden nur ausgegeben, wenn mindest ein Symbol bzw. 
+%                mindestens eine Abk\"urzung in der Arbeit verwendet wurden
+%
+%
+% gliederungsebene:
+% -- section: die Verzeichnisse werden einem Kapitel "Verzeichnisse" untergliedert
+% -- chapter: die Verzeichnisse sind jeweils eigene Kapitel
+% imInhaltsverzeichnis: ja/nein -- Sollen die Verzeichnisse im Inhaltsverzeichnis enthalten sein?
+\seVerzeichnisse[gliederungsebene=section,imInhaltsverzeichnis=ja]{abk}{sym}{abb}{tab}{prg}{alg}
+
+
+
+%-----------------------------
+%- - - - - - - - - - - - - - -
+%-----------------------------
+%Hier für 1,5 Zeilenabstand
+\onehalfspacing
+
+%-----------------------------
+%- - - - - - - - - - - - - - -
+%-----------------------------
+
+\pagenumbering{arabic}
+\input{chapters/introduction}
+
+% Mit markright kann eine verk\"urzte Version der \"Uberschrift f\"ur den Seitenkopf generiert werden
+%
+%
+%\markright{Formaler Aufbau}
+%
+%\input{chapters/drought} 
+%
+%\input{chapters/surface_indices}
+%
+%\input{chapters/data}
+%....
+
+
+\input{chapters/conclusion}
+
+
+% Anhang der Arbeit
+% 
+%
+\seAppendix{}
+
+\input{chapters/anhang}
+
+%
+%  Erzeugung eines Glossars
+%
+% Achtung: Das Glossar wird nur ausgegeben, wenn mindestens ein Eintrag in der Arbeit 
+%                definiert wurde
+%
+%
+\newpage
+\sePrintGlossary{}
+
+
+%
+% Literaturverzeichnisses
+%
+%\newpage
+\sePrintBibliography{}
+
+\input{\seWaPathText/se-test-literaturverzeichnis}
+
+
+%
+% Festlegung des grundlegenden Formatierungsstils des Literaturverzeichnis
+%
+\bibliographystyle{jurabib}
+
+% Eigentliche Ausgabe der in der Arbeit verwendeten Quellen
+%
+%
+% Angabe der bib-Dateien, in denen die Quellen beschrieben sind;
+% die Angabe geht davon aus, dass eine wa.bib-Datei in demselben 
+% Verzeichnis liegt, wie se-ba-vorlage.tex
+%
+
+% 2016-04-01
+%
+% Umbenennung von Quellen- in Literaturverzeichnis (nicht empfohlen, da sich 
+% die 
+% 
+%\renewcommand*{\bibname}{Quellenverzeichnis}
+\seBibliography{wa}
+
+
+%
+% Erzeugung der ehrenw\"ortlichen Erkl\"arung
+%
+% Der optionale Parameter kann verwendet werden, um f\"ur das Thema der Arbeit eine 
+% andere Formatierung vorzunehmen; das sollte in der Regel nicht erforderlich sein;
+% ausserdem besteht die Gefahr inkonsistenter Titel auf dem Titelblatt und in der 
+% ehrenw\"ortlichen Erkl\"arung
+%
+\seEhrenwoertlicheErklaerung{} % dieses Kommando sollte standardm\"assig verwendet werden
+%\seEhrenwoertlicheErklaerung[\LaTeX-Vorlage zur Anfertigung \seThemaWaArbeit{} (Version \version{})]
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+

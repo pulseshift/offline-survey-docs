@@ -1,0 +1,191 @@
+\newcommand{\dateiAbk}{\texttt{wa-abkuerzungen.tex}}
+%
+% Ein kleiner Text, um Abk\"urzungen, Symbole und Glossareintr\"age zu testen
+%
+%
+\section{Kommandos f\"ur die Erzeugung von Abk\"urzungen, Symbolen und Glos\-sar\-eint\-r\"a\-gen}
+
+\subsection{Definition von Abk\"urzungen, Symbolen und Glossareintr\"agen}
+
+Um eine einheitliche Darstellung von Abk\"urzungen, Symbolen und Glossareintr\"agen zu erreichen, 
+werden vier neue Kommandos zur Verf\"ugung gestellt:
+
+\begin{seList}
+\item 
+\verb+\seNewAcronymEntry+\newline
+Definition einer neuen Abk\"urzung.
+\item 
+\verb+\seNewSymbolEntry+\newline
+Definition eines neuen Symbols.
+\item
+\verb+\seNewGlossaryEntry+\newline
+Definition eines neuen Eintrags im Glossar.
+\item
+\verb+\seNewAcronymGlossaryEntry+\newline
+Definition eines neuen Eintrags im Glossar, wobei zus\"atzlich eine 
+Abk\"urzung definiert wird, die dann auch in das Abk\"urzungsverzeichnis aufgenommen wird.
+\end{seList}
+
+Der Datei \dateiAbk{} lassen sich die zugeh\"origen \textbf{Pa\-ra\-me\-ter\-be\-schrei\-bun\-gen}  
+entnehmen.
+In dieser Datei sind auch Beispiele enthalten, wie Abk\"urzungen, Symbole und Glossareintr\"age mit den 
+Standardkommandos definiert werden k\"onnen, was jedoch nicht empfohlen wird!
+
+\subsection{Verwendung von Abk\"urzungen, Symbolen und Glossareintr\"agen im Text}
+
+Innerhalb des Textes wird f\"ur Abk\"urzungen, Symbole und Glossareintr\"age das Kommando \verb+\gls{par1}+ 
+verwendet.
+\texttt{par1} stellt einen Schl\"ussel dar, der die entsprechende Definition identifiziert (vgl. den Inhalt der Datei
+\dateiAbk{}). 
+
+Mit dem Kommando \verb+\glspl+ ist es m\"oglich, beim
+Auftreten eines Begriffes,  f\"ur den ein Glossareintrag existiert, bzw.\ beim (ersten) Auftreten einer 
+Abk\"urzung f\"ur die Vollform die  \textbf{Pluralform} auszugeben.%
+\footnote{Genauer gesagt wird derjenige Wert ausgegeben, der in den 
+Kommandos \texttt{\textbackslash{}seNewAcronymEntry}, \texttt{\textbackslash{}seNewGlossaryEntry} bzw. \texttt{\textbackslash{}seNewAcronymGlossaryEntry}
+als Pluralform definiert wurde. Die Pluralform k\"onnte man alternativ verwenden, um beispielsweise eine 
+Genitivform zu definieren.}
+
+Bei den Kommandos 
+\begin{seList}
+\item\verb+\seNewAcronymEntry+ und 
+\item\verb+\seNewAcronymGlossaryEntry+
+\end{seList}
+kann durch die Verwendung des optionalen Parameters 
+zu\-s\"atz\-lich eine Pluralform f\"ur die Abk\"urzung definiert werden (vgl. \dateiAbk{}).
+
+\subsection{Anwendungsbeispiele}
+
+\subsubsection{Abk\"urzungen}
+
+Die dreimalige Anwendung von \verb+\gls{usb}+ liefert:
+
+\begin{seList}
+\item \gls{usb}
+\item \gls{usb}
+\item \gls{usb}
+\end{seList}
+
+Die Anwendung von \verb+\glspl{dm}+ \verb+\glspl{dm}+ \verb+\gls{dm}+ liefert:
+
+\begin{seList}
+\item \glspl{dm}
+\item \gls{dm}
+\item \gls{dm}
+\end{seList}
+
+Und auch die \gls{dhbw} soll noch erw\"ahnt werden, um das Abk\"urzungsverzeichnis ein wenig zu f\"ullen.
+
+\subsubsection{Symbole}
+
+Bei einem Symbol wird -- im Gegensatz zu Abk\"urzungen -- beim ersten Auftreten im Text nicht die 
+zugeh\"orige Definition ausgegeben. Diese ist aber im Symbolverzeichnis zu finden.
+
+Die zweimalige Anwendung von \verb+\gls{pi}+ liefert:
+
+\begin{seList}
+\item \gls{pi}
+\item \gls{pi}
+\end{seList}
+
+Und jetzt kommt noch ein zweites Symbol f\"ur das Symbolverzeichnis: \gls{ND}
+
+\subsubsection{Glossareintr\"age}
+
+Bei einem Glossareintrag wird beim ersten Auftreten des Begriffes im Text dieser mit \textsuperscript{GL} markiert.
+Im Glossar sind die Seitenzahlen angegeben, auf denen der Begriff verwendet wurde. 
+
+Die dreimalige Anwendung von \verb+\gls{glos:AD}+ liefert:
+
+\begin{seList}
+\item \gls{glos:AD}
+\item \gls{glos:AD}
+\item \gls{glos:AD}
+\end{seList}
+
+Und hier kommt noch ein Beispiel f\"ur einen Glossareintrag, f\"ur den beim ersten und dritten Auftreten die Pluralform verwendet 
+wird:  \verb+\glspl{glos:bs}+  \verb+\gls{glos:bs}+  \verb+\glspl{glos:bs}+ 
+
+\begin{seList}
+\item \glspl{glos:bs}
+\item \gls{glos:bs}
+\item \glspl{glos:bs}
+\end{seList}
+
+\subsubsection{Glossareintrag mit einem zus\"atzlichen Eintrag im Ab\-k\"ur\-zungs\-ver\-zeich\-nis}
+
+Nach der ersten Anwendung des Begriffes, f\"ur den ein Glossareintrag erzeugt wurde, wird in der Folge 
+jeweils nur noch die Abk\"urzung benutzt. 
+
+Die Kommandoausf\"uhrungen \verb+\glspl{glos:ma}+ \verb+\gls{glos:ma}+  \verb+\glspl{glos:ma}+ haben als 
+Ergebnis:
+
+\begin{seList}
+\item \glspl{glos:ma}
+\item \gls{glos:ma}
+\item \glspl{glos:ma}
+\end{seList}
+
+\newpage
+Und jetzt wird auf einer neuen Seite nochmals \verb+\gls{glos:ma}+ verwendet, um im Glossar die neu hinzugekommene 
+Seitennummer zu demonstrieren: \gls{glos:ma}
+
+\subsubsection{Pluralform von Abk\"urzungen}
+
+\textbf{\textsf{Definition einer Abk\"urzung}}
+
+Der Eintrag wurde wie folgt definiert (vgl. \dateiAbk{}):
+
+\vspace{-\baselineskip}
+\begin{verbatim}
+   \seNewAcronymEntry[URLs]{url}{URL}{Uniform Resource Locator}%
+   {Uniform Resource Locators}
+\end{verbatim}
+\vspace{-\baselineskip}
+
+Die Kommandoausf\"uhrungen \verb+\glspl{url}+ \verb+\gls{url}+  \verb+\glspl{url}+ haben als 
+Ergebnis:
+
+\begin{seList}
+\item \glspl{url}
+\item \gls{url}
+\item \glspl{url}
+\end{seList}
+
+\seVsd
+\textbf{\textsf{Definition eines Glossareintrags mit zus\"atzlicher Abk\"urzung}}
+
+Der Eintrag wurde wie folgt definiert (vgl. \dateiAbk{}):
+
+\vspace{-\baselineskip}
+\begin{verbatim}
+   \seNewAcronymGlossaryEntry[TAen]{glos:ta}{TA}{Transaktion}%
+   {Transaktionen}%
+   {Was eine Transaktion ist, sollten Sie ebenfalls bereits wissen!}
+\end{verbatim}
+\vspace{-\baselineskip}
+
+
+Die Kommandoausf\"uhrungen \verb+\glspl{glos:ta}+ \verb+\gls{glos:ta}+  \verb+\glspl{glos:ta}+ haben als 
+Ergebnis:
+
+\begin{seList}
+\item \glspl{glos:ta}
+\item \gls{glos:ta}
+\item \glspl{glos:ta}
+\end{seList}
+
+%2013-07-08
+\subsubsection{Literaturverweise in Glossareinträgen}
+
+Auch bei Glossareinträgen müssen natürlich Literaturverweise angegeben werden. 
+Wird eine Literaturquelle erstmalig in einem Glossareintrag verwendet, dann tritt das Problem auf, 
+dass sie von BibTeX nicht gefunden wird. Ein \textsl{Workaround} besteht darin, für die entsprechenden 
+Literaturverweise \verb+\nocite{key}+-Kommandos anzugeben. \verb+key+ ist hierbei der zugehörige Schlüssel 
+des Eintrags in der .bib-Datei.\footnote{Achtung: Ein \texttt{\textbackslash{}nocite}-Kommando sollte nur in absoluten Ausnahmefällen 
+eingesetzt werden, da hiermit Einträge im Literaturverzeichnis erzeugt werden können, für die (möglicherweise) kein 
+Literaturverweis innerhalb der Arbeit existiert.}
+
+\newpage
+
+ 

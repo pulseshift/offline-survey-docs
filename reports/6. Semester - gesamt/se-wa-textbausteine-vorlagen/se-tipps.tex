@@ -1,0 +1,182 @@
+\chapter{Tipps und Tricks}
+
+\section{Verwendung einer Listenumgebung in einer Tabelle}
+
+Um z.\,B. die \verb+seList+-Umgebung in einer Tabelle verwenden zu k\"onnen, ist es notwendig, die Liste 
+in eine \verb+\parbox+ zu integrieren, da andernfalls die \"Ubersetzung des Dokumentes mit einer 
+Fehlermeldung abgebrochen wird. 
+
+\vref*{quelltext-tab-ereignisse} enth\"alt den Quelltext f\"ur die \vref{tab-ereignisse}. Da das Kommando 
+\newline\hspace*{\fill}\verb+\seSetlistbaselineskip+\hspace*{\fill}\newline in einer 
+\verb+\parbox+ nicht funktioniert, muss das \textbf{Spacing} der Listeneintr\"age per Hand durch entsprechende
+\verb+\vspace*+-Kommandos vorgenommen werden.
+ 
+\vspace{\baselineskip}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{| c | c |}
+\hline
+Ereignis & Eventuelle Folgen/Kommentar \\
+\hline
+Konjunkturkrise &
+\parbox[t]{6cm}{%
+\begin{seList}
+\vspace*{-0.55\baselineskip}
+\item Produktionsverminderung
+\vspace*{-0.5\baselineskip}
+\item Entlassung von Mitarbeitern
+\vspace*{-0.5\baselineskip}
+\item Es ist aber in der Regel keine gute Idee, sich von
+hochqualifizierten Mitarbeitern zu trennen
+\vspace*{0.25\baselineskip}
+\end{seList}
+} % \parbox
+\\
+\hline
+\end{tabular}
+\caption{Ereignisse und ihre Folgen\label{tab-ereignisse}}
+\end{table} 
+ 
+
+\clearpage
+\begin{programm}[htbp]
+\begin{lstlisting}[keywordstyle=\color{black}]
+\begin{table}[htbp]
+\centering
+\begin{tabular}{| c | c |}
+\hline
+Ereignis & Eventuelle Folgen/Kommentar \\
+\hline
+Konjunkturkrise &
+\parbox[t]{6cm}{%
+\begin{seList}
+\vspace*{-0.55\baselineskip}
+\item Produktionsverminderung
+\vspace*{-0.5\baselineskip}
+\item Entlassung von Mitarbeitern
+\vspace*{-0.5\baselineskip}
+\item Es ist aber in der Regel keine gute Idee, sich von
+hochqualifizierten Mitarbeitern zu trennen
+\vspace*{0.25\baselineskip}
+\end{seList}
+} % \parbox
+\\
+\hline
+\end{tabular}
+\caption{Ereignisse und ihre Folgen\label{tab-ereignisse}}
+\end{table} 
+\end{lstlisting}
+\caption{Der Quelltext f\"ur die \vref{tab-ereignisse}\label{quelltext-tab-ereignisse}}
+\end{programm}
+
+\newpage
+\section{Mehrseitige Listings}
+
+Wenn die \verb+programm+-Umgebung verwendet wird, ist es nicht m\"oglich, mehrseitige 
+Listings zu erzeugen.\footnote{Dies liegt in der Tatsache begr\"undet, dass sich Gleitobjekte (floats) nicht \"uber mehrere Seiten 
+erstrecken k\"onnen.} 
+Benutzt man die \verb+lstlisting+-Umgebung ohne die \verb+programm+-Umgebung, k\"onnen zwar einerseits mehrseitige Listings 
+erzeugt werden, andererseits ist es aber auf direktem Weg nicht m\"oglich, die Listingunterschrift in das Listingverzeichnis aufzunehmen.%
+\footnote{Von der Verwendung des \texttt{\textbackslash{}lstlistoflistings}-Kommandos wird \textbf{dringend abgeraten}, da es keine Kontrolle \"uber 
+das Layout des Listings-Verzeichnisses erlaubt und nicht zum Layout der anderen Verzeichnisse passt.} 
+
+Eine L\"osung f\"ur diese Problematik stellt das
+neue Kommando \verb+\captionListing+ dar. Es besitzt einen Parameter, der den Wert f\"ur das ebenfalls neue Kommando \verb+\captionListingText+ 
+definiert. Das \verb+\captionListing+-Kommando muss direkt vor einer Verwendung der \verb+lstlisting+-Umgebung angegeben werden. Es sorgt unter anderem 
+daf\"ur, dass die \"uber \verb+\captionListingText+ definierte Listingunterschrift in das Listingverzeichnis aufgenommen wird.
+
+Das \vref{lis-mehrseitig} wird durch den Quelltext aus \vref{quelltext-lis-mehrseitig} erzeugt.
+
+
+\captionListing{Beispiel f\"ur ein mehrseitiges Listing}
+\begin{lstlisting}[caption=\captionListingText,
+       label=lis-mehrseitig,
+       abovecaptionskip=3mm,aboveskip=\parskip]
+zeile 01;
+zeile 02;
+zeile 03;
+zeile 04;
+zeile 05;
+zeile 06;
+zeile 07;
+zeile 08;
+zeile 09;
+zeile 10;
+zeile 11;
+zeile 12;
+zeile 13;
+zeile 14;
+zeile 15;
+zeile 16;
+zeile 17;
+zeile 18;
+zeile 19;
+zeile 20;
+zeile 21;
+zeile 22;
+zeile 23;
+zeile 24;
+\end{lstlisting}
+
+\vspace*{\baselineskip}
+\begin{programm}[htbp]
+\begin{verbatim}
+\captionListing{Beispiel f\"ur ein mehrseitiges Listing}
+\begin{lstlisting}[caption=\captionListingText,
+       label=lis-mehrseitig,
+       abovecaptionskip=3mm,aboveskip=\parskip]
+zeile 01;
+zeile 02;
+zeile 03;
+zeile 04;
+zeile 05;
+zeile 06;
+zeile 07;
+zeile 08;
+zeile 09;
+zeile 10;
+zeile 11;
+zeile 12;
+zeile 13;
+zeile 14;
+zeile 15;
+zeile 16;
+zeile 17;
+zeile 18;
+zeile 19;
+zeile 20;
+zeile 21;
+zeile 22;
+zeile 23;
+zeile 24;
+\end{lstlisting}
+\end{verbatim}
+\vspace*{-3.5mm}
+\caption{Quelltext von \vref{lis-mehrseitig}\label{quelltext-lis-mehrseitig}}
+\end{programm}
+
+\clearpage
+Die optionalen Parameter der \verb+lstlisting+-Umgebung haben hierbei die folgende Bedeutung:
+
+\begin{seList}
+\item \verb+caption=\captionListingText+
+
+Festlegung der Listingunterschrift; hierf\"ur sollte grunds\"atzlich das Kommando \verb+\captionListingText+ verwendet werden.
+
+\item \verb+label=lis-mehrseitig+
+
+Definition eines Labels, mit dem sp\"ater, z.\,B. \"uber das \verb+\vref+-Kommando, auf die Listingnummer zugegriffen werden kann. \newline 
+Dies entspricht dem \verb+\label{}+-Kommando, das beispielsweise bei einer \verb+programm+-Umgebung verwendet wird.
+
+\item \verb+abovecaptionskip=3mm+
+
+Definition eines zus\"atzlichen Abstands zwischen dem eigentlichen Listing und der Listingunterschrift.
+
+\item \verb+aboveskip=\parskip+ 
+
+Vor dem Listing wird ein zus\"atzlicher Abstand erzeugt, der dem Abstand zwischen zwei Abs\"atzen entspricht.
+\end{seList}
+
+Durch die Verwendung des \verb+\captionListing+-Kommandos wird sichergestellt, dass die \verb+lstlisting+-Umgebung und die 
+\verb+programm+-Umgebung gemeinsam in einem Dokument verwendet werden k\"onnen.
+

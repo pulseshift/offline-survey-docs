@@ -1,0 +1,57 @@
+\section{Anpassungen des Gesamtlayouts}
+
+\subsection{\"Anderung des vertikalen Zwischenraums beim Start eines neuen Kapitels}
+
+Um den vertikalen Zwischenraum zu ver\"andern, den \LaTeX{} automatisch beim 
+Start eines neuen Kapitels erzeugt, kann das Kommando \verb+\seNoChapterSkip+ 
+verwendet werden. Dieses Kommando wird direkt vor \verb+\begin{document}+ eingef\"ugt.
+Es besitzt einen optionalen Parameter, \"uber den ein Wert angegeben werden kann. Der 
+Defaultwert ist \texttt{-14mm}. Damit wird erreicht, dass bei einem neuen Kapitel kein 
+zus\"atzlicher vertikaler Zwischenraum eingef\"ugt wird. 
+
+Beispiele:
+
+\begin{seList}
+\item
+\verb+\seNoChapterSkip{}+\newline \verb+\begin{document}+ \newline
+Es wird kein vertikaler Zwischenraum beim Beginn eines neuen Kapitels erzeugt.
+\item
+\verb+\seNoChapterSkip[11.5mm]+\newline \verb+\begin{document}+ \newline
+Es wird der vertikale Zwischenraum erzeugt, der auch ohne Angabe dieses 
+Kommandos Verwendung findet.
+\item
+\verb+\seNoChapterSkip[21.5mm]+\newline \verb+\begin{document}+ \newline
+Im Vergleich zu dem standardm\"a{\ss}ig erzeugten vertikalen Zwischenraum 
+wird ein 10\,mm gr\"o{\ss}erer Zwischenraum beim Start eines neuen Kapitels 
+erzeugt.
+\end{seList}
+
+\subsection{M\"ogliche Layout-\"Anderungen f\"ur Seminararbeiten}
+
+\subsubsection{Verwendung kleinerer Schriftgr\"o{\ss}en f\"ur \"Uberschriften}
+
+Die Verwendung kleinerer Schriftgr\"o{\ss}en f\"ur \"Uberschriften wird durch 
+die Angabe des Kommandos \verb+\KOMAoption{headings}{small}+ direkt 
+vor \verb+\begin{document}+ erreicht.
+
+Soll dieses Kommando bei Seminarbeiten mit \verb+\seNoChapterSkip{}+ kombiniert 
+werden, ist die folgende Reihenfolge erforderlich:
+
+\begin{seList}
+\item[] \verb+\KOMAoption{headings}{small}+\newline
+\verb+\seNoChapterSkip[-12.25mm]+\newline
+\verb+\begin{document}+
+\end{seList}
+
+Da kleinere Schriftgr\"o{\ss}en f\"ur die \"Uberschriften verwendet werden, sollte das Kommando \verb+\seNoChapterSkip+ mit 
+dem optionalen Parameter \texttt{-12.25mm} aufgerufen werden.
+
+\subsubsection{Unterdr\"uckung des Seitenvorschubs f\"ur die folgenden Kapitel}
+
+Das Kommando \verb+\seChaptersWithoutNewpage{}+ unterdr\"uckt den Seitenvorschub des \verb+\chapter+-Kom\-man\-dos f\"ur die folgenden Kapitel. 
+
+Wenn dieses Kommando in Kombination mit \verb+\seNoChapterSkip{}+ benutzt wird, dann sollte nach jedem Kapitelende noch das Kommando 
+\verb+\seChapterEndSkip{}+ ausgef\"uhrt werden, damit ein vern\"unftiger Abstand zur folgenden Kapitel\"uberschrift entsteht.
+
+\verb+\seChapterNewpage{}+ erzeugt f\"ur die folgenden Kapitel wieder Seitenvorsch\"ube.
+

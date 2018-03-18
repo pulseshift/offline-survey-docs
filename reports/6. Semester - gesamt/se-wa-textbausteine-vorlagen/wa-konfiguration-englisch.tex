@@ -1,0 +1,166 @@
+% wa-konfiguration-englisch
+%
+% 2012-12-13
+% 
+% Diese Datei wird f\"ur die Sprachoption englisch verwendet, d. h.  
+% \newcommand{\seWaSprache}{englisch}
+%
+%
+% In dieser Datei k\"onnen Neudefinitionen vorgenommen werden f\"ur:
+% -- Verzeichnisse
+% -- Unter-/\"Uberschriften von Abbildungen, Tabellen und Listings
+% -- Querverweise innerhalb des Textes
+
+% 2013-07-08: Querverweis auf Anhang hinzugenommen
+%
+%
+%
+
+
+%
+%  Konfiguration der verschiedenen Verzeichnisse
+%
+%  abstandEintrag: Wert wird mit \baselineskip multipliziert
+%
+
+%
+%  Abbildungsverzeichnis
+%
+\seKonfigurationAbb[
+verzeichnisname=List of Figures,
+labeltextLinks=, % kein Text links;
+%labeltextRechts=:,
+labelbreite=1cm,
+%labeleinzug=1cm,
+%abstandEintrag=1,
+%newpage=ja,
+%pnumwidth=20mm,
+%dotsep=1000,
+%tocrmarg=4.5cm,
+%abstandVerzeichnis=-1mm
+]
+
+%
+% LIstingverzeichnis
+%
+\seKonfigurationPrg[
+verzeichnisname=List of Program Listings,
+labeltextLinks=,
+%labeltextRechts=:,
+labelbreite=1cm,
+%labeleinzug=2cm,
+%abstandEintrag=1,
+%newpage=ja,
+%%pnumwidth=20mm,
+%dotsep=1000,
+%tocrmarg=4.5cm,
+%abstandVerzeichnis=-10mm
+]
+
+
+% 2013-01-26
+%
+% Algorithmenverzeichnis
+%
+\seKonfigurationAlg[
+verzeichnisname=List of Algorithms,
+labeltextLinks=,
+%labeltextRechts=:,
+labelbreite=1cm,
+%labeleinzug=2cm,
+%abstandEintrag=1,
+%newpage=ja,
+%pnumwidth=20mm,
+%dotsep=1000,
+%tocrmarg=4.5cm,
+%abstandVerzeichnis=-10mm
+]
+
+
+%
+% Tabellenverzeichnis
+%
+\seKonfigurationTab[
+verzeichnisname=List of Tables,
+labeltextLinks=,
+%labeltextRechts=:,
+labelbreite=1cm,
+%labeleinzug=0.5cm,
+%abstandEintrag=1,
+%newpage=ja,
+%pnumwidth=20mm,
+%dotsep=1000,
+%tocrmarg=4.5cm,
+%abstandVerzeichnis=-10mm
+]
+
+%
+% Abk\"urzungsverzeichnis
+%
+\seKonfigurationAbk[
+verzeichnisname=List of Abbreviations,
+%labelbreite=3cm,
+%labeleinzug=0.5cm,
+%abstandEintrag=1,
+%newpage=ja,
+%abstandVerzeichnis=-10mm
+]
+
+%
+% Symbolverzeichnis
+% 
+\seKonfigurationSym[
+verzeichnisname=List of Symbols,
+%labelbreite=4cm,
+%labeleinzug=3.5cm,
+%abstandEintrag=1,
+%newpage=ja,
+%abstandVerzeichnis=-10mm
+]
+
+%
+% Glossar
+%
+\seKonfigurationGlo[
+verzeichnisname=Glossary,
+%abstandEintrag=0,
+]
+
+
+
+% (eventuelle) Neudefinition f\"ur die Unter-/\"Uberschriften von Abbildungen, Tabellen und Listings
+%
+%
+\renewcommand{\seCaptionNameAbbildung}{Figure}
+\renewcommand{\seCaptionNameTabelle}{Table}
+\renewcommand{\seCaptionNameProgramm}{Listing}
+\renewcommand{\seCaptionNameAlgorithmus}{Algorithm}
+
+
+% % (eventuelle) Neudefinition f\"ur Querverweise innerhalb des Textes
+%
+%
+%
+\renewcommand{\seQuerverweisSeite}{page}
+\renewcommand{\seQuerverweisAbbildung}{figure}
+\renewcommand{\seQuerverweisTabelle}{table}
+\renewcommand{\seQuerverweisProgramm}{listing}
+\renewcommand{\seQuerverweisGleichung}{equation}
+\renewcommand{\seQuerverweisAlgorithmus}{algorithm}
+%
+\renewcommand{\seQuerverweisChapter}{chapter}
+\renewcommand{\seQuerverweisAppendix}{appendix}
+\renewcommand{\seQuerverweisSection}{chapter}
+\renewcommand{\seQuerverweisSubsection}{chapter}
+\renewcommand{\seQuerverweisSubsubsection}{chapter}
+\renewcommand{\seQuerverweisParagraph}{chapter}
+
+
+%
+% Kommandos f\"ur die Konfiguration von URL-Eintr\"agen im Literaturverzeichnis
+%
+\renewcommand*{\biburlprefix}{\jblangle{}URL: }
+\renewcommand*{\biburlsuffix}{\jbrangle{}}
+\renewcommand*{\bibbudcsep}{ -- }
+\AddTo\bibsenglish{\renewcommand*{\urldatecomment}{visited on }}
+

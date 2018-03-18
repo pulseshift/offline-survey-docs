@@ -1,0 +1,29 @@
+% J\"org Baumgart  
+% 2011-04-17
+%
+% Konfiguration des chngcntr-Styles:
+% 
+% Dieser erm\"oglicht es, f\"ur jeden counter festzulegen, ob die Ausgabe kapitelbezogen erfolgt (z. B. 
+% Abb. 2.1) oder eine Durchnummerierung bezogen auf den Gesamttext stattfindet (Abb. 15)
+%
+%
+\RequirePackage{chngcntr}
+%
+% Abbildungen/Tabellen/Gleichungen/Fu{\ss}noten durchgehend nummerieren
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\counterwithout{equation}{chapter}
+\counterwithout{footnote}{chapter}
+% Der counter programm wird wohl implizit durch DeclareNewFloatType definiert
+\counterwithout{programm}{chapter}
+% Der counter algorithmus wird wohl implizit durch DeclareNewFloatType definiert
+\counterwithout{algorithmus}{chapter}
+
+
+% Abbildungen kapitelbezogen nummerieren
+%\counterwithin{figure}{chapter}
+%\counterwithin{table}{chapter}
+%\counterwithin{equation}{chapter}
+%\counterwithin{footnote}{chapter}
+%\counterwithin{programm}{chapter}
+%\counterwithin{algorithmus}{chapter}

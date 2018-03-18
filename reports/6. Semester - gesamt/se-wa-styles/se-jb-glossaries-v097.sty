@@ -1,0 +1,304 @@
+% J\"org Baumgart  
+%
+%
+% 2013-02-21: \hfill in \glossaryentryfield erg\"anzt, um Abk\"urzungen, die aus mehreren Teilen 
+%                      bestehen, im Abk\"urzungsverzeichnis korrekt zu setzen 
+%
+% 2013-02-15: Definition von sealtlist zur Ausgabe der Glossareintr\"age; hier waren 
+%                     die Definitionen der Texlive- und MikTeX-Distribution auseinandergelaufen
+%                     (vgl. \ProvidesPackage{glossary-list}[2011/03/28 v3.0 (NLCT)] in 
+%                     glossary-list.sty)
+%
+%
+% 2012-03-24: Erg\"anzung eines optionalen Parameters bei den Kommandos 
+%                     \seNewAcronymEntry und \seNewAcronymGlossaryEntry, um f\"ur das erste 
+%                     Auftreten auch eine Pluralform f\"ur die Abk\"urzung definieren zu k\"onnen.
+%                   
+%
+% 2012-02-05: Neues Kommando, das eine Abk\"urzung definiert, die auch einen Glossareintrag 
+%                      besitzt, sowie neue Kommandos f\"ur das einheitliche Layout der Angabe 
+%                      der Vollform einer Abk\"urzung beim ersten Auftreten im Text
+%
+%
+% 2011-04-17
+%
+% 2011-08-07: indexspace redifiniert, um bei altlist als Style f\"ur die Glossareintr\"age den Abstand
+%                     zwischen zwei Eintr\"agen ver\"andern zu k\"onnen; hierf\"ur wurde das neue 
+%                     Kommando \seGlossaryItemSkip definiert
+%
+%
+% Konfiguration glossaries.sty, um ein gutes Layout f\"ur die Ausgabe von Abk\"urzungsverzeichnis, 
+% Symbolverzeichnis und Glossar zu erreichen
+%
+%
+%  Einstellungen f\"ur das Abk\"urzungsverzeichnis
+%
+% translator.sty ist notwendig f\"ur die Umbennenung des Abk\"urzungsverzeichnisses bei Verwendung von glossaries.sty
+\RequirePackage[ngerman]{translator}
+%
+\RequirePackage[%
+nonumberlist, %keine Seitenzahlen anzeigen
+acronym,      %ein AbkŸrzungsverzeichnis erstellen; keine Angabe => das Glossar wird ausgegeben
+%%toc,          %EintrŠge im Inhaltsverzeichnis
+]      %im Inhaltsverzeichnis auf section-Ebene erscheinen
+{glossaries}
+%Ein eigenes Symbolverzeichnis erstellen
+\newcommand{\seSymboleVerzeichnisname}{Symbolverzeichnis}
+\newglossary[slg]{symbolslist}{syi}{syg}{\seSymboleVerzeichnisname}
+
+%Den Punkt am Ende jeder Beschreibung deaktivieren
+\renewcommand*{\glspostdescription}{}
+
+
+%Glossar-Befehle anschalten
+\makeglossaries
+
+\newcommand{\seGlossaryItemsep}{0mm}
+\newcommand{\seGlossaryTitlesep}{0mm}
+\newcommand{\seGloLabelwidth}{4em}
+\newcommand{\seGloLeftmargin}{0cm}
+\newenvironment{seGloDescription}%
+  %  {\vspace*{0mm}\vspace*{\seGlossaryTitlesep}\begin{list}{}{\setlength{\leftmargin}{\seGloLabelwidth}%
+    {\vspace*{0mm}\vspace*{\seGlossaryTitlesep}\begin{list}{}{\setlength{\leftmargin}{\seGloLeftmargin}%
+\addtolength{\leftmargin}{\seGloLabelwidth}%    
+                          \setlength\labelwidth{\seGloLabelwidth}\setlength{\listparindent}{0pt}\setlength{\labelsep}{0pt}%
+                          \setlength\itemindent{0pt}%
+                          \setlength{\parsep}{0pt}%
+                          \setlength{\itemsep}{\seGlossaryItemsep}%
+                          \setlength{\topsep}{0pt}%
+                          \setlength{\parskip}{0pt}%
+                          \let\makelabel\seGloDescriptionlabel}}%
+    {\end{list}}
+
+
+%\newcommand*\seGloDescriptionlabel[1]
+%    {\hspace{\labelsep}\sffamily\textbf{#1}}    
+
+\newcommand*\seGloDescriptionlabel[1] {#1}    
+
+\newglossarystyle{seGloList}{%
+%% Use description environment:
+\renewenvironment{theglossary}%
+{\begin{seGloDescription}}{\end{seGloDescription}}%
+%% No header at the start of the environment:
+\renewcommand*{\glossaryheader}{}%
+%% No group headings:
+\renewcommand*{\glsgroupheading}[1]{}%
+%% Main (level 0) entries start a new item in the list:
+\renewcommand*{\glossaryentryfield}[5]{%
+% 2013-02-21 \hfill erg\"anzt
+%\item[\glstarget{##1}{##2}] ##3\glspostdescription\space ##5}%
+\item[\glstarget{##1}{##2}\hfill] ##3\glspostdescription\space ##5}%
+
+
+%% Sub-entries continue on the same line:
+\renewcommand*{\glossarysubentryfield}[6]{%
+\glstarget{##2}{\strut}##4\glspostdescription\space ##6.}%
+% \end{macrocode}
+% Add vertical space between groups:
+% \begin{macrocode}
+\renewcommand*{\glsgroupskip}{\indexspace}%
+% JB kleinerer Zwischenraum zwischen den Eintr\"agen
+%      Was \indexspace genau ist, ist leider unklar
+\renewcommand*{\glsgroupskip}{}%
+}
+
+%
+%  2011-08-07
+\newcommand{\seGlossaryItemSkip}{0}%
+\let\seGloIndexspace=\indexspace%
+%\renewcommand{\indexspace}{\vspace{-\baselineskip}}
+%\renewcommand{\indexspace}{\seGloIndexspace\vspace{-\baselineskip}}
+\renewcommand{\indexspace}{\seGloIndexspace\vspace{-\baselineskip}\vspace{\seGlossaryItemSkip\baselineskip}}
+
+%
+%  2012-02-06 
+%
+%  Neue Kommandos f\"ur Glossar-, Abk\"urzungs- und Symbolverzeichnis
+%
+
+
+% 2012-03-22
+%
+%
+% \seNewAcronymGlossaryEntry
+%
+%
+% Bemerkung: Die Definition optionaler Parameter ist nicht sinnvoll! Dann m\"usste beim usepackage-Kommando
+%                     die sanitize={name=false,description=false} Option verwendet warden, was zur Folge hat, dass z. B. 
+%                     beim description-Text "zerbrechliche Kommandos" zu Fehlern f\"uhren; f\"ur alle diese Kommandos 
+%                     m\"usste man dann mit \protect arbeiten, was nicht sonderlich angenehm ist!
+%
+%
+% #1: plural der AbkŸrzung (optionaler Parameter)
+% #2: label
+% #3: abkuerzung
+% #4: vollform
+% #5: plural vollform
+% #6: beschreibung
+\newcommand{\seNewAcronymGlossaryEntry}[6][]{%
+\newacronym{acr:#2}{#3}{#4}%
+\ifthenelse{\equal{#1}{}}{\def\seAbkPlural{#3}}{\def\seAbkPlural{#1}}%
+\ifthenelse{\equal{#5}{}}{\def\seFirstPlural{#4}}{\def\seFirstPlural{#5}}%
+%
+\newglossaryentry{#2}{%
+first=\textsl{#4}\textsuperscript{GL} (\textsl{#3})\glsadd{acr:#2},%
+firstplural=\textsl{\seFirstPlural}\textsuperscript{GL} (\textsl{\seAbkPlural})\glsadd{acr:#2},%
+text={#3},%
+plural={\seAbkPlural},%
+name={#4 (#3)},%
+description={#6}%
+}%
+}
+
+
+%% \seNewAcronymGlossaryEntry
+%%
+%%
+%% Bemerkung: Die Definition optionaler Parameter ist nicht sinnvoll! Dann m\"usste beim usepackage-Kommando
+%%                     die sanitize={name=false,description=false} Option verwendet warden, was zur Folge hat, dass z. B. 
+%%                     beim description-Text "zerbrechliche Kommandos" zu Fehlern f\"uhren; f\"ur alle diese Kommandos 
+%%                     m\"usste man dann mit \protect arbeiten, was nicht sonderlich angenehm ist!
+%%
+%%
+%% #1: label
+%% #2: abkuerzung
+%% #3: vollform
+%% #4: plural vollform
+%% #5: beschreibung
+%\newcommand{\seNewAcronymGlossaryEntry}[5]{%
+%\newacronym{acr:#1}{#2}{#3}%
+%\ifthenelse{\equal{#4}{}}{\def\seFirstPlural{#3}}{\def\seFirstPlural{#4}}
+%%
+%\newglossaryentry{#1}{%
+%first=\textsl{#3}\textsuperscript{GL} (\textsl{#2})\glsadd{acr:#1},%
+%firstplural=\textsl{\seFirstPlural}\textsuperscript{GL} (\textsl{#2})\glsadd{acr:#1},%
+%text={#2},%
+%plural={#2},%
+%name={#3 (#2)},%
+%description={#5}%
+%}%
+%}
+
+
+
+% \seNewGlossaryEntry
+%
+%
+%
+% #1: label
+% #2: vollform
+% #3: plural vollform%
+% #4: beschreibung
+\newcommand{\seNewGlossaryEntry}[4]{%
+\ifthenelse{\equal{#3}{}}{\def\sePlural{#2}}{\def\sePlural{#3}}%
+\newglossaryentry{#1}{%
+first=\textsl{#2}\textsuperscript{GL},%
+firstplural=\textsl{\sePlural}\textsuperscript{GL},%
+name={#2},%
+plural={\sePlural},%
+description={#4}%
+}%
+}
+
+% 2012-03-22
+
+% \seNewAcronymEntry
+%
+% #1: plural der AbkŸrzung (optionaler Parameter)
+% #2: label
+% #3: abkuerzung
+% #4: vollform
+% #5: plural vollform beim ersten Auftreten
+\newcommand{\seNewAcronymEntry}[5][]{%
+\ifthenelse{\equal{#1}{}}{\def\seAbkPlural{#3}}{\def\seAbkPlural{#1}}%
+\ifthenelse{\equal{#5}{}}{\def\seFirstPlural{#4}}{\def\seFirstPlural{#5}}%
+\newglossaryentry{#2}{%
+type=\acronymtype,%
+name={#3},%
+description={#4},%
+first={\textsl{#4} (\textsl{#3})},%
+plural={\seAbkPlural},%
+firstplural={\textsl{\seFirstPlural} (\textsl{\seAbkPlural})}
+}
+}
+
+%% \seNewAcronymEntry
+%%
+%% #1: label
+%% #2: abkuerzung
+%% #3: vollform
+%% #4: plural vollform
+%\newcommand{\seNewAcronymEntry}[4]{%
+%\ifthenelse{\equal{#4}{}}{\def\seFirstPlural{#3}}{\def\seFirstPlural{#4}}%
+%\newglossaryentry{#1}{%
+%type=\acronymtype,%
+%name={#2},%
+%description={#3},%
+%first={\textsl{#3} (\textsl{#2})},%
+%plural={#2},%
+%firstplural={\textsl{\seFirstPlural} (\textsl{#2})}
+%}
+%}
+
+
+% \seNewSymbolEntry
+%
+% #1: label
+% #2: symbol
+% #3: Sortierung (Zeichenkette, die die Sortierreihenfolge bestimmt; keine Angabe => es wird nach symbol sortiert)
+% #4: vollform
+% Achtung: f\"ur den Parameter sort f\"uhrt die Angabe eines Kommandos zu einem Fehler
+\newcommand{\seNewSymbolEntry}[4]{%
+\ifthenelse{\equal{#3}{}}%
+{%
+\newglossaryentry{#1}{%
+type=symbolslist,%
+name={\mbox{\textsl{#2}}},%
+sort=#2,%
+description={#4},%
+first={\mbox{\textsl{#2}}},%
+plural={\mbox{\textsl{#2}}},%
+firstplural={\mbox{\textsl{#2}}}%
+} % newglossaryentry
+} % if
+{%
+\newglossaryentry{#1}{%
+type=symbolslist,%
+name={\mbox{\textsl{#2}}},%
+%sort=c,
+sort=#3,%
+description={#4},%
+first={\mbox{\textsl{#2}}},%
+plural={\mbox{\textsl{#2}}},%
+firstplural={\mbox{\textsl{#2}}}
+} % newglossaryentry
+} % else 
+} % seNewSymbolEntry
+
+
+% 2013-02-15
+%
+%
+% Durch diese Listendefinition wird sichergestellt, dass ein Glossar sowohl in der 
+% TeXShop- als auch in der MiKTeX-Welt identisch gesetzt wird. Diese Definition 
+% entspricht \newglossarystyle{altlist} aus \ProvidesPackage{glossary-list}[2011/03/28 v3.0 (NLCT)]
+% Achtung: MiKTeX verwendet eine neuere Version des glossaries-Pakets, die altlist umdefiniert hat,
+% so dass eine "ungew\"unschte" Leerzeile nach der Nennung des Begriffs auftritt. 
+%
+%
+\newglossarystyle{sealtlist}{%
+  \glossarystyle{list}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \item[\glsentryitem{##1}\glstarget{##1}{##2}]\mbox{}\newline
+      ##3\glspostdescription\space ##5}%
+  \renewcommand{\glossarysubentryfield}[6]{%
+    \par
+    \glssubentryitem{##2}%
+    \glstarget{##2}{\strut}##4\glspostdescription\space ##6}%
+}
+
+
+
+
+

@@ -1,0 +1,65 @@
+% J\"org Baumgart  
+% 2011-05-03
+%
+% Standardkonfiguration von floatrow.sty
+%
+% Konfiguration der zugeh\"origen Verzeichnisse
+%
+% Achtung: Dieser Style arbeitet nicht mit tocloft.sty zusammen; daf\"ur erlaubt er aber eine 
+%                viel bessere Konfiguration von floats im Vergleich zu float.sty
+%
+
+% 2013-01-26: Erg\"anzungen f\"ur ein Algorithmenverzeichnis
+%
+%
+%
+
+\RequirePackage{floatrow}
+%
+
+% Erzeugung einer neuen float-Umbegung f\"ur Programmlistings
+%
+%
+\newcommand{\seCaptionNameProgramm}{Listing}
+\DeclareNewFloatType{programm}{fileext=lop,name=\seCaptionNameProgramm}
+
+% 2013-01-26
+%
+% Erzeugung einer neuen float-Umbegung f\"ur Algorithmenlistings
+%
+%
+\newcommand{\seCaptionNameAlgorithmus}{Algorithmus}
+\DeclareNewFloatType{algorithmus}{fileext=loalg,name=\seCaptionNameAlgorithmus}
+% end 2013-01-26
+
+
+% Konfiguration der verschiedenen float-Umgebungen
+%
+% style=boxed: Verwendung einer Umrandung
+% frameset:
+% -- \fboxsep: Abstand des Rahmens um das float-Element; nur verwendet, wenn ein Rahmen erzeugt wird
+% -- \fboxrule: Linienst\"arke (Achtung: dieser Wert wirkt sich global auf \fbox aus
+% capposition = top / bottom : \"Uberschrift / Unterschrift  
+% justification = centering: float wird zentriert  
+% framefit = yes: Rahmen entspricht der Seitenbreite
+% captionskip=...: Abstand der \"Uber-/Unterschrift zum float-Element bzw. Rahmen
+
+%\floatsetup[figure]{style=boxed,capposition=top,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+%
+%\floatsetup[table]{style=boxed,capposition=top,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+%
+%\floatsetup[programm]{style=boxed,capposition=top,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+
+\newcommand{\seCaptionNameAbbildung}{Abbildung}
+\newcommand{\seCaptionNameTabelle}{Tabelle}
+
+\floatsetup[figure]{capposition=bottom,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+
+\floatsetup[table]{capposition=bottom,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+
+\floatsetup[programm]{capposition=bottom,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+
+% 2013-01-26
+% 
+\floatsetup[algorithmus]{capposition=bottom,justification=centering,frameset={\fboxsep=10pt\fboxrule=1pt},framefit=yes,captionskip=10pt}
+% end 2013-01-26

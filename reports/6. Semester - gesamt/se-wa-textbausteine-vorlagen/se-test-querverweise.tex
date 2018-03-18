@@ -1,0 +1,52 @@
+% J\"org Baumgart
+% 2012-06-01
+%
+%
+\section{Definition und Erzeugung von Querverweisen}
+
+Die Grundlage f\"ur die Erzeugung eines Querverweises bildet die Definition eines 
+\textbf{Labels}, z.\,B. \verb+\label{querverweis1}+\label{querverweis1}.
+
+Mit dem Kommando \verb+\vref+, z.\,B. \verb+\vref{querverweis1}+, wird ein Querverweis mit 
+den beiden folgenden Eigenschaften erzeugt:
+
+\begin{seList}
+\item 
+Falls sich das Label auf eine \textsl{Abbildung}, eine \textsl{Tabelle}, ein \textsl{Listing} oder eine 
+\textsl{Gleichung} bezieht, wird zus\"atzlich zur entsprechenden Nummer ein Text mit ausgegeben.
+Beispielsweise erzeugt \verb+\vref{noten}+ \vref{noten}. Die zugeh\"origen Labels sind dann innerhalb 
+der \verb+figure+-, \verb+table+-, \verb+programm-+ oder \verb+equation+-Umgebung definiert. 
+Die auszugebenden Texte k\"onnen in der Datei\newline
+\hspace*{\fill}\verb+wa-konfiguration-deutsch.tex+\hspace*{\fill}\newline  
+umdefiniert werden.
+
+Bezieht sich ein Label auf eine Textstelle, z.\,B. \verb+\label{querverweis1}+, dann wird die Kapitelnummer 
+mit dem Zusatz \textsl{Kapitel} ausgegeben: \vref{querverweis1}\newline
+F\"ur die Gliederungsebenen \verb+\chapter+, \verb+\section+, \verb+\subsection+, \verb+\subsubsection+ 
+und \verb+\paragraph+ kann dieser \textsl{Zusatz} ebenfalls in der Datei \newline
+\hspace*{\fill}\verb+wa-konfiguration-deutsch.tex+\hspace*{\fill}\newline 
+umdefiniert werden. 
+\item
+Wenn sich der Querverweis auf die aktuelle Seite bezieht, dann wird keine Seitennummer ausgegeben.
+\end{seList}
+
+Bei der Verwendung des \verb+\vref+-Kommandos ist zu beachten, dass vor dem auszugebenden Text ein Leerzeichen 
+eingef\"ugt wird. Im Normalfall hat dieses keine weitere Auswirkung. Wenn allerdings ein Absatz direkt mit einem 
+\verb+\vref+-Kommando beginnt, dann wird der entsprechende Text nicht linksb\"undig ausgegeben, d.\,h. es liegt 
+eine Verletzung des Blocksatzes vor.%
+
+\vref{noten} stellt einen blocksatzverletzenden Querverweis dar.
+
+Dieses \textsl{Problem} l\"asst sich durch die Anwendung des \verb+\vref*+-Kommandos vermeiden.\label{vrefstern} 
+
+\vref*{noten} stellt einen nicht blocksatzverletzenden Querverweis dar.
+
+Allerdings f\"uhrt die Verwendung des \verb+\vref*+-Kommandos innerhalb eines Satzes auch wieder 
+zu einem nicht gew\"unschten Ergebnis: Das in \vref*{noten} dargestellte Klausurergebnis ... .%
+\footnote{Der Grund, warum die Kommandos \texttt{\textbackslash{}vref} 
+und \texttt{\textbackslash{}vref*}
+in dieser Form definiert wurden, erschlie{\ss}t sich dem Autor dieses Dokuments allerdings nicht!}
+
+Mit dem Kommande \verb+\pageref+ wird lediglich die Seitennummer ausgegeben, z.\,B. \verb+\pageref{noten}+ \pageref{noten}
+oder \verb+\pageref{querverweis1}+ \pageref{querverweis1}.
+

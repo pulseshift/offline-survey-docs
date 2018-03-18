@@ -1,0 +1,97 @@
+%  se-wa-input-styles-v098.tex
+%
+%  Joerg Baumgart 01.08.2011
+%
+%  Zusammenfassung und Konfiguration wichtiger Styles f\"ur die 
+%  Erzeugung von Seminar-, Projekt- und Bachelorarbeiten
+%
+%  2012-03-12: auf Version 0.94 umgestellt
+%
+%
+% 2012-12-13: auf Version 0.95 umgestellt
+%                     Sprachoptionen englisch/deutsch zusammengef\"uhrt
+%                     bchart.sty hinzugenommen
+%                 
+%
+% 2013-01-27: auf Version 0.96 umgestellt
+%                     algorithm2e-Paket integriert
+%
+%
+% 2013-07-08: auf Version 0.97 umgstellt 
+%                     utf8, Fehlerkorrekturen bei pa1
+%
+% 2014-02-02: auf Version 0.971 umgestellt
+%                     Workaround für Fehler im KOMAScript 3.2
+%                     KOMAoption listof un documentclass übernommen
+%
+%
+%
+%
+% 2014-07-22: etex-Paket hinzugenommen
+%
+%
+% 2016-04-01: Sperrvermerk und Ehrenwörtliche Erklärung aus der PO 2015
+%
+%
+%
+% 2016-12-18: auf Version 0.98 umgestellt
+%                     bchart.sty und algorithm2e haben veraltete Kommandos verwendet (\sf und \bf), 
+%                     die unter MacTeX 2016 nicht mehr unterstützt werden 
+%
+
+\documentclass[12pt,BCOR=10mm,headinclude=on,footinclude=off,bibliography=totoc,listof=ignorechapter]{scrreprt}
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{ifthen}
+% 2012-12-13
+\ifthenelse{\equal{\seWaSprache}{deutsch}}{% Deutsche Einstellungen
+\usepackage[ngerman]{babel}% 
+}{% Englische Einstellungen
+\usepackage[english]{babel}% 
+}
+
+\usepackage{lmodern}
+
+\usepackage{tikz} % Graphikpaket, das zu pdfLaTeX kompatibel ist
+\usepackage{xkeyval} % Definition von Kommandos mit mehreren optionalen Argumenten
+\usepackage{listings} % Formatierung von Programmlistings
+\usepackage{graphicx} % Einbinden von Graphiken
+\usepackage{color}
+\usepackage{\seWaPathSty/slashbox} % Diagonalen in Tabellenfeldern
+\usepackage{framed} % Erzeugung schwarzer Linien am linken Rand zur Hervorhebung von Textteilen
+\usepackage{caption} % Korrektes Setzen einer mehrzeiligen float-Unterschrift bei neu definierten float-Umgebungen
+\usepackage{floatrow}
+% 2012-12-13
+\usepackage{\seWaPathSty/bchart} % Kommandos zur Erzeugung von Balkendiagrammen
+% 2013-01-27 
+\usepackage[boxed,ngerman]{\seWaPathSty/algorithm2e}
+%\usepackage[tworuled,vlined,ngerman]{\seWaPathSty/algorithm2e}
+
+
+% Es wird jeweils die sty-Datei importiert und entsprechende Konfigurationseinstellungen werden vorgenommen
+
+\usepackage{\seWaPathSty/se-jb-scrpage2} % Formatierung der Kopf- und Fu{\ss}zeilen
+\usepackage{\seWaPathSty/se-jb-footmisc}    % Fussnoten besser formatieren
+
+\usepackage{\seWaPathSty/se-jb-glossaries-v097} % Abk\"urzungsverzeichnis, Symbolverzeichnis, Glossar
+   
+\usepackage{\seWaPathSty/se-jb-floatrow}    % Definition und Konfiguration von float-Umgebungen (figure, table, die neue programm-Umgebung)
+% Achtung: se-jb-varioref muss nach se-jb-floatrow importiert werden; 
+% andernfalls ist der counter programm f\"ur die labelformat-Anweisung noch nicht definiert   
+\usepackage{\seWaPathSty/se-jb-varioref-v097}   % Definition von Querverweisen
+\usepackage{\seWaPathSty/se-jb-chngcntr}   % Kapitelweise oder globale Nummerierung von Abbildungen etc.
+   
+\usepackage{\seWaPathSty/se-jb-listen} % Definition neuer, besser formatierter Listen
+% 2014-02-02
+%\usepackage{\seWaPathSty/se-jb-kommandos-v097} % neue Kommandos f\"ur Seminar-, Projekt- und Bachelorarbeiten
+%\usepackage{\seWaPathSty/se-jb-kommandos-v0971} % neue Kommandos f\"ur Seminar-, Projekt- und Bachelorarbeiten
+% 2016-04-01
+\usepackage{\seWaPathSty/se-jb-kommandos-v0972} % neue Kommandos f\"ur Seminar-, Projekt- und Bachelorarbeiten
+% 2012-12-13
+\ifthenelse{\equal{\seWaSprache}{englisch}}{\usepackage{\seWaPathSty/se-jb-kommandos-englisch-v0972}}{}
+
+% 2016-12-18
+\renewcommand{\sf}{\sffamily}
+\renewcommand{\bf}{\bfseries}
+

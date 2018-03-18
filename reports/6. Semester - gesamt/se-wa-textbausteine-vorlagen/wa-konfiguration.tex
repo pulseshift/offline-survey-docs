@@ -1,0 +1,105 @@
+%  Individuelle Konfiguration einer Projektarbeit/Bachelorarbeit
+%
+%
+%
+%
+
+% 2012-10-27
+%
+% \"Anderung des Schrifttyps f\"ur das gesamte Dokument
+%
+% Das gesamte Dokument wird in einer serifenlosen Schrift gesetzt
+%\renewcommand{\familydefault}{\sfdefault}
+%
+% Das gesamte Dokument wird in einer Serifenschrift gesetzt
+% Achtung: serifenlose Schriften sind jetzt grunds\"atzlich nicht mehr nutzbar!
+%
+%\renewcommand{\sffamily}{\normalfont}
+
+% 2012-12-05
+%
+% Verwendung des url-Pakets
+% Durch den optionalen Paremeter hyphens wird eine Trennung 
+% von URLs auch nach Bindestrichen erlaubt
+\usepackage[hyphens]{url}
+
+
+% 2012-10-27
+%
+%
+% Literaturverzeichnis
+% 
+% Literaturverzeichnis gem\"ass den Vorgaben von Theisen aufbauen
+\usepackage{\seWaPathSty/se-jb-jurabib-theisen} 
+% Verwendung der Harvard-Zitierweise
+%\usepackage{\seWaPathSty/se-jb-jurabib-harvard} 
+
+% Weitere Optionseinstellungen f\"ur das Koma-Script
+%
+% Zwischen Abs\"atzen einen Abstand von 0.5 \baselineskip erzeugen
+\KOMAoption{parskip}{full}
+%
+% Vergleiche Duden "Gliederung von Nummern, S.111" 
+% DIN 5008 anschauen, wenn sie neu ver\"offentlicht wurde
+\KOMAoption{numbers}{noendperiod}
+%
+%
+
+
+
+%  Voreinstellungen f\"ur floats
+%  Durch die verwendeten Parameter wird die Wahrscheinlichkeit deutlich kleiner, 
+%  dass Gleitobjekte (z. B. Abbildungen) ans Ende des Dokumentes verschoben 
+%  werden; 
+%  Achtung: clearpage erzwingt die Ausgabe von Gleitobjekten
+%
+\renewcommand{\topfraction}{1}  % Gleitobjekte d\"urfen eine Seite zu 100% belegen 
+\renewcommand{\bottomfraction}{1} % Entsprechender Wert f\"ur den unteren Teil der Seite
+\renewcommand{\textfraction}{0} % Eine Seite darf auch ohne Fliesstext existieren
+%%%\renewcommand{\floatpagefraction}{1} % Bedeutung unklar, daher keine Ver\"anderung des Vorgabewertes 
+                                                                        % von 0.5; eventuell bringt ein \"Anderung auf 1 etwas, wenn 
+                                                                         % Probleme mit floats auftreten
+                                                                         
+                                                                         
+                                                                         
+% Konfiguration von Programm-Listings
+% 
+% Achtung: hier gibt es nahezu beliebig viele weitere Konfigurationm\"oglichkeiten; vgl. Paketdokumentation
+%
+\lstset{language=Java,basicstyle=\ttfamily,keywordstyle=\color{blue},captionpos=b,aboveskip=0mm,belowskip=0mm,
+          xleftmargin=0em}               
+          
+%
+% Grundkonfiguration der Abs\"ande zwischen den Items der maximal f\"unf Verschachtelungsebenen der 
+% neuen Listenumgebungen
+%                                                                             
+% Initialisierung der Abst\"ande zwischen den items f\"ur seList; Grundeinheit: 0.5\baselineskip; siehe se-jb-listen
+\seSetlistbaselineskip{1}{0.75}{0.75}{0.75}{0.75}
+% Initialisierung der Abst\"ande zwischen den items f\"ur seToplist; Grundeinheit: 0.5\baselineskip; siehe se-jb-listen
+\seSettoplistbaselineskip{1}{0.75}{0.75}{0.75}{0.75}     
+
+
+% Einlesen der sprachabh\"angigen Konfigurationsdatei
+%
+%
+\ifthenelse{\equal{\seWaSprache}{deutsch}}{% deutsch
+\input{\seWaPathText/wa-konfiguration-deutsch}%
+}{% englisch
+\input{\seWaPathText/wa-konfiguration-englisch}
+}
+
+% Kommandos, die direkt nach \begin{document} ausgef\"uhrt werden m\"ussen
+%
+%
+%
+\AtBeginDocument{%
+\renewcommand{\listfigurename}{\seAbbildungenVerzeichnisname}
+\renewcommand{\listtablename}{\seTabellenVerzeichnisname}
+\renewcommand{\figurename}{\seCaptionNameAbbildung}
+\renewcommand{\tablename}{\seCaptionNameTabelle}
+\labelformat{lstlisting}{\seQuerverweisProgramm{} #1}
+\renewcommand{\thelstlisting}{\theprogramm}
+\pagenumbering{roman}
+}
+                                                              
+                                                                         

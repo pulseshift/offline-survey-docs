@@ -1,0 +1,27 @@
+\subsection{Harvard-Zitierweise}
+
+Um die Harvard-Zitierweise anzuwenden, muss in der Konfigurationsdatei \newline
+\hspace*{\fill}\verb+wa-konfiguration+\hspace*{\fill}\newline
+die Zeile \newline
+\hspace*{\fill}\verb+\usepackage{\seWaPathSty/se-jb-jurabib-theisen}+\hspace*{\fill}\newline
+durch\newline
+\hspace*{\fill}\verb+\usepackage{\seWaPathSty/se-jb-jurabib-harvard}+\hspace*{\fill}\newline
+ausgetauscht werden. Das Literaturverzeichnis wird dann ohne die Angabe von 
+Kurztiteln ausgegeben und die Autorennamen werden im Text nicht mehr kursiv 
+dargestellt.
+
+F\"ur das Zitieren im Text werden dann die Kommandos \verb+\citep+ bzw. \verb+\citealt+ 
+verwendet.
+
+\begin{seList}
+\item \verb+\citep{Bri:WA}+ $\rightarrow$ \citep{Bri:WA}.
+\item Optionale Angabe einer Seitenzahl: \verb+\citep[S.\,45]{Bri:WA}+ \newline$\rightarrow$ \citep[S.\,45]{Bri:WA}.
+\item Optionale Angabe von vgl.: \verb+\citep[vgl.][]{Bri:WA}+ $\rightarrow$ \citep[vgl.][]{Bri:WA}.
+\item Optionale Angabe von Seitenzahl und vgl.: \verb+\citep[vgl.][S.\,45]{Bri:WA}+\newline$\rightarrow$ \citep[vgl.][S.\,45]{Bri:WA}.
+\item Angabe einer Liste von Referenzen: \verb+\citep[vgl.][]{Bri:WA,RP:WA}+\newline $\rightarrow$ \citep[vgl.][]{Bri:WA,RP:WA}.
+\item Wenn man keine Klammern haben m\"ochte: \newline\verb+\citealt[vgl.][S.\ 44]{Bri:WA}+ $\rightarrow$ 
+        \citealt[vgl.][S.\ 44]{Bri:WA}.
+\item Damit kann man dann Verweise selbst zusammenbauen:
+         \newline\verb+(\citealt[vgl.][S.\,48]{Bri:WA} und \citealt[S.\,96]{RP:WA})+      
+         \newline$\rightarrow$ (\citealt[vgl.][S.\,48]{Bri:WA} und \citealt[S.\,96]{RP:WA}).
+\end{seList}

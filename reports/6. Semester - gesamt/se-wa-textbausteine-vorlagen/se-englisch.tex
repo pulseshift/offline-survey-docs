@@ -1,0 +1,24 @@
+\chapter{Die Erstellung englischsprachiger wissenschaftlicher Arbeiten}
+
+\"Uber das Kommando \verb+\seWaSprache+, das am Anfang einer Vorlagendatei stehen muss,
+kann die zu verwendende Sprache, Deutsch oder Englisch, festgelegt werden:
+
+\begin{seList}
+\item \verb+\newcommand{\seWaSprache}{deutsch}+  bzw.
+\item \verb+\newcommand{\seWaSprache}{englisch}+
+\end{seList}
+
+Hiermit werden automatisch alle relevanten Bezeichnungen, z.\,B. auf dem Titelblatt oder im Literaturverzeichnis, aber auch Standardtexte,  
+wie die ehrenw\"ortliche Erkl\"arung oder ein Sperrvermerk, in der gew\"ahlten Sprache ausgegeben.
+
+Bei der Verwendung von Querverweisen ist zu beachten, dass im Englischen die Gro{\ss}- und Kleinschreibung zu unterscheiden ist. 
+Will man beispielsweise einen Querverweis auf eine Tabelle erzeugen, der direkt am Satzanfang steht, dann ist statt des 
+Kommandos \verb+\vref+ das Kommando \verb+\Vref+ zu verwenden. Entsprechend gibt es f\"ur das Kommando \verb+\vref*+ 
+die Variante \verb+\Vref*+, die den ersten Buchstaben der Ausgabe (automatisch) gro{\ss} schreibt. N\"aheres zur Verwendung des 
+\verb+\vref*+-Kommandos findet man in \vref{vrefstern}.
+
+Alle \"Anderungen, die bei der deutschen Version einer Arbeit in der Datei \newline
+\hspace*{\fill}\verb+wa-konfiguration-deutsch.tex+\hspace*{\fill}\newline
+vorgenommen werden, m\"ussen bei einer englischsprachigen Arbeit in der Datei \newline 
+\hspace*{\fill}\verb+wa-konfiguration-englisch.tex+\hspace*{\fill}\newline
+erfolgen.

@@ -1,0 +1,404 @@
+%  J\"org Baumgart   2012-07-17
+% 
+%  Ge\"anderte Kommandos f\"ur eine englische wissenschaftliche Arbeit
+%
+%  2012-10-05 Anpassung f\"ur BA / PA1 / PA2
+%
+%  2012-10-21 Restliche Anpassungen f\"ur PA1 / und PA2; Korrektur Statutoty Declaration
+%
+%
+%  2016-04-06: Anpassung Sperrvermerk und Ehrenwörtliche Erklärung an die PO2015
+%
+
+% Wahrscheinlich kann man hier sprachspezifisch mehrere Umbenennungen definieren
+%
+% 
+%
+\renewcommand{\sePrintAbkuerzungsverzeichnis}{%
+\deftranslation[to=English]{Acronyms}{\seAbkuerzungenVerzeichnisname}%
+\renewcommand{\seGloLabelwidth}{\seAbkBreiteLabel}%
+\renewcommand{\seGloLeftmargin}{\seAbkEinzugLabel}%
+\renewcommand{\seGlossaryItemsep}{\seAbkAbstandEintrag\baselineskip}%
+\ifthenelse{\equal{\seAbkNewpage}{ja}}{\newpage}{}%
+\ifthenelse{\equal{\seAbkAbstandVerzeichnis}{}}{}{\vspace{\seAbkAbstandVerzeichnis}}%
+%\printglossary[type=\acronymtype,style=seGloList]%
+% 2015-11-01, andernfalls wird Akronyme ausgegeben
+\printglossary[type=\acronymtype,style=seGloList,title=\seAbkuerzungenVerzeichnisname,toctitle=\seAbkuerzungenVerzeichnisname]%
+\vspace{0mm}%
+}
+
+
+%
+\renewcommand{\seTitelblattSem}{%
+\thispagestyle{empty}
+\ifthenelse{\equal{\seDhbwLogoSkalierung}{}}{}{\renewcommand{\seDhbwLogoScale}{\seDhbwLogoSkalierung}}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(0,0)%
+\put(\seDhbwLogoDx,\seDhbwLogoDy){\put(\seDhbwLogoX,\seDhbwLogoY){\includegraphics[scale=\seDhbwLogoScale]%
+{\seWaPathJpg/DHBW_d_MA_46mm_RGB_300dpi}}}
+%
+\ifthenelse{\equal{\seHilfslinien}{}}{}{%
+\ifthenelse{\equal{\seFirmenlogo}{}}
+{% kein Firmenlogo
+% 2011-08-04 Werte angepasst
+\sePdfHline[0.1]{-30,32.0}{200}
+\sePdfVline[0.1]{0,-250}{285}
+\sePdfVline[0.1]{150,-250}{285}
+\sePdfVline[0.1]{160.3,-250}{285}
+\sePdfVline[0.1]{105.3,-250}{285}
+%\sePdfHline[0.1]{-30,30.4}{200}
+%\sePdfVline[0.1]{0,-250}{285}
+%\sePdfVline[0.1]{150,-250}{285}
+%\sePdfVline[0.1]{157.9,-250}{285}
+%\sePdfVline[0.1]{102.9,-250}{285}
+}%
+{%
+% 2011-08-04 Werte angepasst
+\sePdfHline[0.1]{-30,32}{200}
+\sePdfVline[0.1]{0,-250}{285}
+\sePdfVline[0.1]{-10.2,-250}{285}
+\sePdfVline[0.1]{150,-250}{285}
+\sePdfVline[0.1]{160.2,-250}{285}
+\sePdfVline[0.1]{110.2,-250}{285}
+%\sePdfHline[0.1]{-30,30.4}{200}
+%\sePdfVline[0.1]{0,-250}{285}
+%\sePdfVline[0.1]{-7.9,-250}{285}
+%\sePdfVline[0.1]{150,-250}{285}
+%\sePdfVline[0.1]{157.9,-250}{285}
+%\sePdfVline[0.1]{107.9,-250}{285}
+} % ifthenelse
+} % ifthenelse
+%
+\end{picture}
+
+\begin{center}
+\textsf{\large{}Baden-Wuerttemberg Cooperative State University\\[1.5mm] Mannheim} \\[20mm]
+\textsf{\textbf{\Large{}\seTypDerArbeit}}\\[5mm]
+\textsf{\textbf{\seThemaDerArbeit}} \\[1.5cm]
+%
+% 2012-12-19
+\textsf{\textbf{\Large{}Department of \seStudiengang}\\[3mm] \textsf{\seStudienrichtung}}
+%\textsf{\textbf{\Large{}Department of Business Information Systems}\\[3mm] \textsf{Software Methodology}}
+\end{center}
+
+\vfill
+\seSettoplistbaselineskip{-0.25}{0.75}{0.75}{0.75}{0.75}
+
+\textsf{
+\seIt[Head of Department: ]{Author:}{\seVerfasser}
+\seIt{Enrolment Number:}{\seMatrikelnummer}
+\seIt{Company:}{\seFirma}
+\seVse
+\seIt{Class:}{\seKurs}
+\seIt{Head of Department:}{\seStudiengangsleiter}
+\seVse
+\seIt{Module:}{\seModul}
+\seIt{Course:}{\seLehrveranstaltung}
+\seIt{Lecturer:}{\seDozent}
+}
+\seResettoplistbaselineskip{}
+} % seTitelblattSem
+
+
+\renewcommand{\seTitelblattSeminararbeit}[1][]{%
+\setkeys{seTitelblattSeminararbeit}{#1}%
+%\renewcommand{\seNrpa}[1]{zweite##1}
+%\renewcommand{\seNrPa}[1]{Zweite##1}
+\renewcommand{\seTypDerArbeit}{Seminar Paper}
+\renewcommand{\seVorlage}{se-sem-vorlage}
+\renewcommand{\seArbeit}[1]{Seminarbeit##1}
+\seTitelblattSem{}
+\sePrintSperrvermerk{}
+} % \seTitelblattZweiteProjektarbeit
+%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ende \seTitelblattSeminararbeit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\setypderarbeit}{}
+
+\renewcommand{\seIstSeminararbeit}{%
+\renewcommand{\seWaTypDerArbeit}{seminararbeit}%
+\renewcommand{\seArbeit}[1]{Seminar Paper##1}%
+\renewcommand{\seTypDerArbeit}{Seminar paper}%
+\renewcommand{\seThemaWaArbeit}{of a seminar paper}%
+\renewcommand{\setypderarbeit}{seminar paper}%
+} 
+
+\renewcommand{\seIstErsteProjektarbeit}{%
+\renewcommand{\seWaTypDerArbeit}{ersteprojektarbeit}%
+\renewcommand{\seArbeit}[1]{Project Paper##1}%
+\renewcommand{\seNrpa}[1]{first##1}%
+% 2013-07-08
+%\renewcommand{\seNrPa}[1]{Thirst##1}%
+%\renewcommand{\seTypDerArbeit}{Thirst Project Paper}%
+\renewcommand{\seNrPa}[1]{First##1}%
+\renewcommand{\seTypDerArbeit}{First Project Paper}%
+\renewcommand{\seThemaWaArbeit}{of the first project paper}%
+\renewcommand{\setypderarbeit}{project paper}%
+} 
+
+\renewcommand{\seIstZweiteProjektarbeit}{%
+\renewcommand{\seWaTypDerArbeit}{zweiteprojektarbeit}%
+\renewcommand{\seArbeit}[1]{Project Paper##1}%
+\renewcommand{\seNrpa}[1]{second##1}%
+\renewcommand{\seNrPa}[1]{Second##1}%
+\renewcommand{\seTypDerArbeit}{Second Project Paper}%
+\renewcommand{\seThemaWaArbeit}{of the second project paper}%
+\renewcommand{\setypderarbeit}{project paper}%
+} 
+
+\renewcommand{\seIstBachelorarbeit}{%
+\renewcommand{\seWaTypDerArbeit}{bachelorarbeit}%
+\renewcommand{\seArbeit}[1]{Bachelor Thesis##1}%
+\renewcommand{\seTypDerArbeit}{Bachelor Thesis}%
+\renewcommand{\seThemaWaArbeit}{of the bachelor thesis}%
+\renewcommand{\setypderarbeit}{bachelor thesis}%
+} 
+
+
+% JB 2016-04-06
+
+%\renewcommand{\seSperrvermerkText}{%
+%This \seArbeit{} contains confidential data of \textsl{\seFirma}. Publication, including partial publication,
+%is forbidden without explicit permission of 
+%%Eine Ver\"offentlichung 
+%%oder Vervielf\"altigung dieser Arbeit, auch auszugsweise, ist ohne ausdr\"uckliche Genehmigung 
+%\textsl{\seFirma}. This thesis may only be maid available to the academic supervisor, head of department and 
+%examination board. 
+%%nicht zul\"assig. Diese Arbeit darf nur den Korrektoren, der Studiengangsleitung und dem Pr\"ufungsausschuss 
+%%zug\"anglich gemacht werden.
+%}
+
+
+
+\renewcommand{\seSperrvermerkText}{%
+The content of this work  -- as a whole or in parts --  may not be made available to anyone not involved in the examination or the evaluation process, unless the workplace training provider (Dual Partner) has  granted permission indicating otherwise.  
+}
+
+\renewcommand{\sePrintSperrvermerk}{%
+\ifthenelse{\equal{\seSperrvermerk}{nein}}{}%
+{%
+\chapter*{Restriction Note}\thispagestyle{empty}
+
+\seSperrvermerkText{}
+}
+} % seSperrvermerk
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Titelblatt BA, PA1, PA2 englisch
+%
+%
+%
+\renewcommand{\seTitelblatt}{%
+%\renewcommand{\seTypDerArbeit}{xxx}
+\ifthenelse{\equal{\seFirmenlogo}{}}{%
+% 2011-08-04 bereits global definiert!!!
+%\renewcommand{\seDhbwLogoX}{93.65}%
+%\renewcommand{\seDhbwLogoY}{1.9}%
+%\renewcommand{\seDhbwLogoScale}{1.2}%
+}% 
+{% Firmenlogo liegt vor => Breite des DHBW-Logos = 50mm
+% 2011-08-04 Werte angepasst
+\renewcommand{\seDhbwLogoX}{101.8}%
+\renewcommand{\seDhbwLogoY}{6.05}%
+\renewcommand{\seDhbwLogoScale}{1.092}%
+%\renewcommand{\seDhbwLogoX}{99.5}%
+%\renewcommand{\seDhbwLogoY}{4.45}%
+%\renewcommand{\seDhbwLogoScale}{1.092}%
+}% ifthenelse
+\thispagestyle{empty}
+\ifthenelse{\equal{\seDhbwLogoSkalierung}{}}{}{\renewcommand{\seDhbwLogoScale}{\seDhbwLogoSkalierung}}
+
+\setlength{\unitlength}{1mm}
+\begin{picture}(0,0)%
+\put(\seDhbwLogoDx,\seDhbwLogoDy){\put(\seDhbwLogoX,\seDhbwLogoY){\includegraphics[scale=\seDhbwLogoScale]%
+{\seWaPathJpg/DHBW_d_MA_46mm_RGB_300dpi}}}
+\ifthenelse{\equal{\seFirmenlogo}{}}{}{%
+% 2011-08-04 Anpassung der Werte
+\put(\seFirmenlogoDx,\seFirmenlogoDy){\put(-0.05,15.9){\includegraphics[scale=\seFirmenlogoScale]%
+{\seWaPathJpg/\seFirmenlogo}}}%
+%\put(\seFirmenlogoDx,\seFirmenlogoDy){\put(-7.9,14.3){\includegraphics[scale=\seFirmenlogoScale]{\seFirmenlogo}}}%
+}%
+%
+\ifthenelse{\equal{\seHilfslinien}{}}{}{%
+\ifthenelse{\equal{\seFirmenlogo}{}}
+{% kein Firmenlogo
+% 2011-08-04 Werte angepasst
+\sePdfHline[0.1]{-30,32.0}{200}
+\sePdfVline[0.1]{0,-250}{285}
+\sePdfVline[0.1]{150,-250}{285}
+\sePdfVline[0.1]{160.3,-250}{285}
+\sePdfVline[0.1]{105.3,-250}{285}
+%\sePdfHline[0.1]{-30,30.4}{200}
+%\sePdfVline[0.1]{0,-250}{285}
+%\sePdfVline[0.1]{150,-250}{285}
+%\sePdfVline[0.1]{157.9,-250}{285}
+%\sePdfVline[0.1]{102.9,-250}{285}
+}%
+{%
+% 2011-08-04 Werte angepasst
+\sePdfHline[0.1]{-30,32}{200}
+\sePdfVline[0.1]{0,-250}{285}
+\sePdfVline[0.1]{-10.2,-250}{285}
+\sePdfVline[0.1]{150,-250}{285}
+\sePdfVline[0.1]{160.2,-250}{285}
+\sePdfVline[0.1]{110.2,-250}{285}
+%\sePdfHline[0.1]{-30,30.4}{200}
+%\sePdfVline[0.1]{0,-250}{285}
+%\sePdfVline[0.1]{-7.9,-250}{285}
+%\sePdfVline[0.1]{150,-250}{285}
+%\sePdfVline[0.1]{157.9,-250}{285}
+%\sePdfVline[0.1]{107.9,-250}{285}
+} % ifthenelse
+} % ifthenelse
+%
+\end{picture}
+
+\begin{center}
+% 2012-08-22
+\textsf{\large{}Baden-Wuerttemberg Cooperative State University\\[1.5mm] Mannheim} \\[20mm]\vspace*{\seExtraAbstandY mm}\seAbstandSperrvermerkY{}
+\textsf{\textbf{\Large{}\seTypDerArbeit}}\\[5mm]
+% 2012-08-22
+\textsf{\textbf{\seThemaDerArbeit}} \\[1.5cm]\vspace*{\seExtraAbstandY mm}\seAbstandSperrvermerkY{}
+%\textsf{\textbf{\Large{}Studiengang Wirtschaftsinformatik}\\[3mm] \textsf{Vertiefungsrichtung Softwaremethodik}}
+% 2012-02-17
+\textsf{\textbf{\Large{}Department of \seStudiengang}\\[3mm] \textsf{\seStudienrichtung}}
+\end{center}
+
+% 2012-08-22
+\ifthenelse{\equal{\seSperrvermerk}{nein}}{}{\vspace*{\seExtraAbstandY mm}\seAbstandSperrvermerkY{}\vfill\begin{center}{\textsf{\Large\textbf{Restriction Note}}}\end{center}}
+
+% 2012-08-22
+\vspace*{\seExtraAbstandY mm}\seAbstandSperrvermerkY{}
+\vfill
+\seSettoplistbaselineskip{-0.25}{0.75}{0.75}{0.75}{0.75}
+\textsf{
+\seIt[Matriculation Number: ]{Author:}{\seVerfasser}
+\seIt{Matriculation Number:}{\seMatrikelnummer}
+\seIt{Company:}{\seFirma}
+\ifthenelse{\equal{\seAbteilung}{}}{}{\seIt{Department:}{\seAbteilung}}
+\seVsd
+\seIt{Class:}{\seKurs}
+\seIt{Head of Department:}{\seStudiengangsleiter}
+\seVsd
+\seIt{Academic Supervisor:}{\seWissenschaftlicherBetreuerName}
+\ifthenelse{\equal{\seWissenschaftlicherBetreuerEmail}{}}{}{\seIt{}{\seWissenschaftlicherBetreuerEmail}}
+\ifthenelse{\equal{\seWissenschaftlicherBetreuerTelefon}{}}{}{\seIt{}{\seWissenschaftlicherBetreuerTelefon}}
+\seVsd
+\seIt{Company Supervisor:}{\seFirmenbetreuerName}
+\ifthenelse{\equal{\seFirmenbetreuerEmail}{}}{}{\seIt{}{\seFirmenbetreuerEmail}}
+\ifthenelse{\equal{\seFirmenbetreuerTelefon}{}}{}{\seIt{}{\seFirmenbetreuerTelefon}}
+\seVsd
+\seIt{Time Frame:}{\seBearbeitungszeitraumVon{} - \seBearbeitungszeitraumBis}
+}
+\seResettoplistbaselineskip{}
+}
+
+
+% Umschalten auf den Anhang
+% Achtung: ohne dieses clearpage fehlt dubioserweise bei den vorherigen Seiten im Seitenkopf die Kapitelangabe
+\renewcommand{\seAppendix}{%
+\clearpage
+\appendix{}\renewcommand{\chaptername}{Appendix}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%  Erzeugung einer Ehrenw\"ortlichen Erkl\"arung
+%%
+%%  Der optionale Paremeter kann f\"ur eine ge\"anderte Formatierung des Titels der Arbeit verwendet werden
+%%
+%%
+%%\newcommand{\seThemaDerArbeitEE}{???}
+%\renewcommand{\seEhrenwoertlicheErklaerung}[1][]{%
+%\ifthenelse{\equal{#1}{}}{\renewcommand{\seThemaDerArbeitEE}{\seThemaDerArbeit}}{\renewcommand{\seThemaDerArbeitEE}{#1}}%
+%\chapter*{Statutory Declaration}\thispagestyle{empty}
+%
+%\seSettoplistbaselineskip{1}{0.75}{0.75}{0.75}{0.75}
+%\textquotedblleft{}This is to solemnly declare:
+%
+%\begin{seToplist}{1.}
+%\item[1.] that I have produced this \setypderarbeit{} on the topic
+%\begin{center}
+%\textbf{\seThemaDerArbeitEE{}}
+%\end{center}
+%by myself;
+%\item[2.] that all ideas taken directly or indirectly from other sources have been marked as
+%such;
+%\item[3.] that this seminar paper has not yet been shown to any other board of examiners;
+%\item[4.] that the digital version is identical to the printed version.
+%\end{seToplist}
+%
+%I am fully aware of the legal consequences of making a false declaration.\textquotedblright{}
+%
+%\seVs{2.5}
+%Place, Date \hspace*{\fill} Signature\newline
+%\seResettoplistbaselineskip{}
+%}
+%%
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Ende \seEhrenwoertlicheErklaerung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Erzeugung einer Ehrenw\"ortlichen Erkl\"arung
+%
+%  Der optionale Paremeter kann f\"ur eine ge\"anderte Formatierung des Titels der Arbeit verwendet werden
+%
+%  JB: 2016-04-06
+%
+%\newcommand{\seThemaDerArbeitEE}{???}
+\renewcommand{\seEhrenwoertlicheErklaerung}[1][]{%
+\ifthenelse{\equal{#1}{}}{\renewcommand{\seThemaDerArbeitEE}{\seThemaDerArbeit}}{\renewcommand{\seThemaDerArbeitEE}{#1}}%
+\chapter*{Statutory Declaration}\thispagestyle{empty}
+
+\seSettoplistbaselineskip{1}{0.75}{0.75}{0.75}{0.75}
+I hereby declare 
+
+\begin{seList}
+\item that  I have prepared the \setypderarbeit{} on hand with the title:
+\begin{center}
+\textbf{\seThemaDerArbeitEE{}}
+\end{center}
+without help of any third party,
+\item  that I have not used any other sources, references, supporting tools and materials than the ones listed. 
+\item Further I declare, that the submitted electronic copy is identical with the printed copy.
+\end{seList}
+
+I am aware, that misrepresentation of the above will have legal and academic consequences. 
+
+%I am fully aware of the legal consequences of making a false declaration.%\textquotedblright{}
+
+\seVs{2.5}
+Place, Date \hspace*{\fill} Signature\newline
+\seResettoplistbaselineskip{}
+}
+%
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ende \seEhrenwoertlicheErklaerung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%
+% 2012-12-19
+%
+%
+\renewcommand{\seWirtschaftsinformatik}{Business Information Systems}
+\renewcommand{\seSoftwaremethodik}{Software Methodology}
+\renewcommand{\seSoftwareEngineering}{Software Engineering}
+\renewcommand{\seSalesUndConsulting}{Sales \& Consulting}
+\renewcommand{\seApplicationManagement}{Application Management}
+\renewcommand{\seNameVerzeichnisse}{Indexes}

@@ -1,0 +1,82 @@
+% J\"org Baumgart  
+% 2011-04-17
+%
+% 2013-01-27: Integration des Algorithmenverzeichnisses
+%
+% 2013-04-28: \seQuerverweisAppendix integriert; \labelformat{chapter} angepasst, um zwischen Kapitel und Anhang zu unterscheiden
+%
+% Konfiguration von varioref, um eine komfortable Erzeugung von Querverweisen zu erreichen
+%
+% Achtung: \usepackage[ngerman]{varioref} funktioniert nicht
+\RequirePackage{varioref}
+
+\newcommand{\seQuerverweisSeite}{S.}
+\newcommand{\seQuerverweisAbbildung}{Abbildung}
+\newcommand{\seQuerverweisTabelle}{Tabelle}
+\newcommand{\seQuerverweisProgramm}{Listing}
+\newcommand{\seQuerverweisGleichung}{Gleichung}
+\newcommand{\seQuerverweisAlgorithmus}{Algorithmus}
+%
+\newcommand{\seQuerverweisChapter}{Kapitel}
+% JB 2013-04-28
+\newcommand{\seQuerverweisAppendix}{Anhang}
+\newcommand{\seQuerverweisSection}{Kapitel}
+\newcommand{\seQuerverweisSubsection}{Kapitel}
+\newcommand{\seQuerverweisSubsubsection}{Kapitel}
+\newcommand{\seQuerverweisParagraph}{Kapitel}
+
+%  Achtung: \vref f\"ugt als Pr\"afix ein Leerzeichen ein; vref* verhindert dieses Leerzeichen
+%
+%
+\newcommand{\seCharacterA}{A}
+\labelformat{table}{\seQuerverweisTabelle{} #1}
+\labelformat{figure}{\seQuerverweisAbbildung{} #1}
+%\labelformat{chapter}{\seQuerverweisChapter{} #1}
+% JB 2013-04-28
+\labelformat{chapter}{\ifcat\thechapter\seCharacterA\seQuerverweisAppendix\else\seQuerverweisChapter\fi{} #1}
+\labelformat{section}{\seQuerverweisSection{} #1}
+\labelformat{subsection}{\seQuerverweisSubsection{} #1}
+\labelformat{subsubsection}{\seQuerverweisSubsubsection{} #1}
+\labelformat{paragraph}{\seQuerverweisParagraph{} #1}
+\labelformat{equation}{\seQuerverweisGleichung{} #1}
+\labelformat{programm}{\seQuerverweisProgramm{} #1}
+% 2013-01-27 Nutzt hier nichts; muss in \AtBeginDocument stehen; siehe wa-konfiguration.tex
+%\labelformat{lstlisting}{\seQuerverweisProgramm{} #1}
+\labelformat{algorithmus}{\seQuerverweisAlgorithmus{} #1}
+
+%
+% 2012-12-17 f\"ur Englisch muss mit addto gearbeitet werden, bei deutsch 
+%                    merkw\"urdigerweise nicht; zur Sicherheit wird es f\"ur die 
+%                    deutsche Variante auch ausgef\"uhrt, man wei{\ss} ja nie
+%                    Achtung: die %-Zeichen hinter den Kommando-Redefinitionen 
+%                                   m\"ussen sein, andernfalls stimmt die Formatierung
+%                                   von Literaturreferenzen (!) nicht mehr
+%
+\addto\extrasngerman{%
+\renewcommand{\reftextfaceafter}{auf \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextfacebefore}{auf \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextbefore}{auf \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextafter}{auf \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextfaraway}[1]{auf \seQuerverweisSeite{} \thevpagerefnum}%
+}
+%
+% 2012-12-17 f\"ur Englisch muss mit addto gearbeitet werden, bei deutsch 
+%                    merkw\"urdigerweise nicht
+%
+\addto\extrasenglish{%
+\renewcommand{\reftextfaceafter}{on \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextfacebefore}{on \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextbefore}{on \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextafter}{on \seQuerverweisSeite{} \thevpagerefnum}%
+\renewcommand{\reftextfaraway}[1]{on \seQuerverweisSeite{} \thevpagerefnum}%
+}
+
+%
+% Redefinition von pageref, um einfach einheitliche Querverweise auf Seiten erzeugen zu k\"onnen
+% Hier ist zu beachten, dass auch ein Querverweis auf diesselbe Seite m\"oglich ist; dieser Fall ist bei 
+% Querverweisen, die nur Seitenzahlen enthalten, kaum sinnvoll zu behandeln. 
+% Eine Unterdr\"uckung der Seitennummer reicht nicht aus, da man in der Regel noch einen Begleittext wie "vgl." hat
+%
+\let\savepageref=\pageref%
+\renewcommand{\pageref}[1]{\seQuerverweisSeite{} \savepageref{#1}}
+
