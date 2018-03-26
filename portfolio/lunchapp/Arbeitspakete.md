@@ -3,7 +3,7 @@
 **Nr.**|**Name**|**Vorgänger**|**Nachfolger**|**Verantwortlich**|**Ist-Dauer**|**Deadline**|**Status**|
 -----|-----|-----|-----|-----|----|---|---|
 1|Einarbeitung| |2 3|Julia/Jan|2h/tbd|21.03.2018|
-2|Datenmodell erarbeiten (Konzept) + mit Daten füllen|1|6|Philipp|40min|21.03.2018|**closed**|
+2|Datenmodell erarbeiten (Konzept) + mit Daten füllen|1|6|Philipp/Julia|40min/240min|21.03.2018|**closed**|
 3|Komponenten definieren|1|4|Philipp|30min|21.03.2018|**closed**|
 4|Komponenten anlegen (Rahmen  keine Details)|3|5 6 8 9 10 11 13|Phlipp|30min|21.03.2018|**closed**|
 5|Navigation implementieren|4|17|||04.04.2018|
@@ -19,3 +19,9 @@
 15|Triggerfunktion Teilen|8|12|||04.04.2018|
 16|Triggerfunktion Umfrage (offline nicht verfügbar)|9 13|12|||04.04.2018|
 17|Design optimieren|5 11 10 12 14||||13.04.2018|
+
+# Bugs
+
+**Git Nr.**|**Name**|**Verantwortlich**|**Ist-Dauer**|**Status**|
+-----|-----|-----|-----|-----|
+18|enable scroll in lunch list|Philipp|30min|**closed**|
