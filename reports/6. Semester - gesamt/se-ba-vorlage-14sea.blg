@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: se-ba-vorlage-14sea.aux
+The style file: jurabib.bst
+I found no \citation commands---while reading file se-ba-vorlage-14sea.aux
+Database file #1: wa.bib
+I was expecting a `,' or a `}'---line 587 of file wa.bib
+ : 
+ : isbn = {978-3-452-27122-8},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 2 error messages)
