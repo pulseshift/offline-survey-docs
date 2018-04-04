@@ -2,11 +2,7 @@
 \label{section:realisation:lunchapp}
 
 \subsection{Beschreibung}
-
-- Was ist die Idee
-
-- Warum Lunch und nicht z.B. Dienstplan
-
+Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern m�glichst fr�h zu nehmen und eine App zu entwickeln, die kontinuierlich von den Mitarbeitern genutzt wird. W�hrend der Nutzung wird der Mitarbeiter gefragt, ob er an einer Umfrage teilnehmen m�chte, und kann dies auch direkt aus der App tun. Der Vorteil einer Lunchapp ist hier vor allem, dass es sich um unkritische Daten handelt. Um diesen Punkt zu verdeutlichen, wird eine andere M�glichkeit weiter beleuchtet: Der Dienstplan. Hierbei handelt es sich um datenschutzrechtlich sensible Daten, die keineswegs frei verf�gbar gemacht werden d�rfen. Dementsprechend wurde f�r eine prototypische Implementierung eine Lunchapp ausgew�hlt.
 \subsection{Lastenheft}
 
 \begin{itemize}
@@ -40,3 +36,14 @@
 \subsection{EPK: Ablauf der Anwendung}
 
 \subsection{Architektur}
+Im Folgenden werden grundlegende architektonische Entscheidungen gelistet und jeweils begründet.
+
+Zunächst wurde sich für eine \gls{pwa} entschieden, und gegen eine Umsetzung als hybride Applikation. Um diese Entscheidung ausreichend begründen zu können, werden beide Technologien kurz vorgestellt.
+
+Eine hybride Applikation ist eine native App, die aber mit Web-Technologien umgesetzt wird. Dies bedeutet, dass die Web-App in einem nativen Container ausgeführt wird und auch über einige native Funktionen verfügen kann. Nachteilig wirkt sich diese Technologie vor allem bei der Performance und der User Experience aus. Der Nutzer wird ein berichten, dass sich die Applikation unecht anfühlt, und gerade bei größeren Datenmengen und anspruchsvollen Routinen auch langsam wird. Allerdings brauch der Anbieter die App zum größten Teil nur einmal entwickeln und kann sie mit wenig Anpassungen auf allen Plattformen anbieten. Auch wenn diese Technologie vielversprechend sein mag, ist eine \gls{pwa} für den vorliegenden Anwendungsfall die bessere Wahl.
+
+Eine \gls{pwa} ist eine Web-Applikation, die sich der Nutzer über das Speichern auf dem Home-Screen lokal abspeichern kann. Durch sogenannte Service-Worker können zudem eingeschränkt auch native Funktionalitäten genutzt werden, zum Beispiel das Senden von Push-Benachrichtigungen sowie das Cachen von Daten, und die daraus resultierende Offline-Nutzbarkeit. Für den vorliegenden Use-Case sind eben genau diese beiden Funktionalitäten ausreichend. Weiterhin wird die App über einen beliebigen Browser installiert, und muss nicht über den jeweiligen App-Store heruntergeladen werden. Das erhöht die Adaption der App und erleichtert den Unternehmen die Verteilung, da die für native Applikation notwendige Infrastruktur nicht vorhanden seinm muss.
+
+Da eine \gls{pwa} eine Web-Applikation ist, sind entsprechende Frameworks auszuwählen. In Anbetracht der begrenzten Zeit und mangelnden personellen Ressourcen wurde Vue.js als Framework gewählt. Alternativen wie React.js und Angular.js erscheinen zwar mächtiger, sind aber auch zeitaufwendiger in der Einarbeitung. Zudem lässt sich der begrenzte Umfang der App auch problemlos mit Vue.js realisieren und im Anschluss auch warten.
+
+Um ein möglichst übersichtliches und modernes Design zu erhalten, wird Material Design eingesetzt. Gegenüber Alternativen wie beispielsweise Bootstrap hat es den Vorteil, dass es für mobile Applikationen subjektiv bewertet ein ansprechendes Design bietet. Um eine reibungslose Nutzung von Material Design Komponenten in Vue.js zu ermögichen, wird auf Vuetify zurückgegriffen, welches Material Design in Vue.js implementiert.
