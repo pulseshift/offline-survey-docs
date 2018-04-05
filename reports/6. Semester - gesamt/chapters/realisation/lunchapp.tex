@@ -40,3 +40,20 @@
 \subsection{EPK: Ablauf der Anwendung}
 
 \subsection{Architektur}
+
+\subsection{Komponenten}
+\subsubsection{Push Notification}
+Die Push Notification soll ermöglichen, dass der Benutzer der Progressiven Webapp Benachrichtigungen auf sein beliebiges Endgerät erhält. So kann es ermöglicht werden, die Aufmerksamkeit des Nutzers auf die App und somit auch die Umfrage zu lenken. 
+
+Vorab muss jedoch geprüft werden, ob das Endgerät oder auch der benutze Browser die Push Notifications unterstützen. 
+
+\begin{itemize}
+\item Zunächst wird geprüft, ob der Services Worker bereit ist. 
+\item Danach wird geprüft, ob dieser Services Worker in der Lage ist Push Notifications zu verarbeiten.
+\item Daraufhin wird geprüft, ob das geöffnete Fenster die Push Notifications überhaupt unterstützt.
+\item Im nächsten Schritt wird geprüft, ob die Push Notifications schon abgelehnt wurden. Bei diesem Schritt kann darauf hin entweder erneut gefragt werden oder einfach ohne Push Notifiactions die App bedient werden.
+\end{itemize} 
+
+Wird die Seite aufgerufen und die Push Notification sind technisch möglich wird der Benutzer mit einem Pop-Up darauf hingewiesen, dass er die Möglichkeit hat diese zu erhalten. 
+
+Hat der Benutzer sich dazu entschlossen die Push Notifications einzuschalten, können nun von außen Nachrichten an den Benutzer gesendet werden. Dazu wird die Entwicklungs-Plattform Firesbase genutzt. Mit Hilfe von Firebase können nun die Benachrichtigungen in bestimmten zeitlichen Abständen gesendet werden.
