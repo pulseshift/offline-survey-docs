@@ -6,6 +6,7 @@
 *.blg
 *.glg
 *.glo
+*.gz
 *.gls
 *.ist
 *.loalg
@@ -13,6 +14,7 @@
 *.log
 *.lop
 *.lot
+*.pdf
 *.slg
 *.syg
 *.syi
