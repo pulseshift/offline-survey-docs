@@ -12,7 +12,7 @@
 8|Teile Banner|4|15|Jan|6h|04.04.2018|**closed**|
 9|Umfrage Banner|4|16|Jan|6h|04.04.2018|**closed**|
 10|Wochentagwechselfunktionalität|4|17|Philipp|90min|04.04.2018|**closed**|
-11|Umfrage reinladen|4|17|Philipp||11.04.2018|
+11|Umfrage reinladen|4|17|Philipp|50min|11.04.2018|**closed**|
 12|Push Notification (Android)|6 15 16|17|Julia/Philipp|18h/10h|04.04.2018|**closed**|
 13|Offline Sync (nur Design cachen)|4|16| ||28.03.2018|
 14|Kantine wechseln|7|17|Philipp|45min|11.04.2018|**closed**|
@@ -26,10 +26,17 @@
 -----|-----|-----|-----|-----|
 18|enable scroll in lunch list|Philipp|30min|**closed**|
 19|Erweiterung des Lunchmenüs|Julia|45min|**closed**|
+21|Icons|Philipp|45min|**closed**|
 
 
 # Summen Stand 10.04.2018
 
 - Philipp: 19h 25 min
+- Jan: 12h
+- Julia: 24h 45 min
+
+# Summen Stand 13.04.2018
+
+- Philipp: 22h
 - Jan: 12h
 - Julia: 24h 45 min
