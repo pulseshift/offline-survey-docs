@@ -6,7 +6,7 @@
 + Die Umfragefunktionalität die von PulseShift entwickelt wurde, wird in die Anwendung hineingerendert werden. Das Anzeigen der Umfrage wird nicht selbst implementiert. 
 + Der Server für die Umfragefunktionalität wird austauschbar sein. Damit ist gemeint, dass die URL beliebig definierbar ist.
 + Die Benutzereingrenzung wird nach einer Absprache mit PulseShift über die konkrete gewünschte Ausprägung implementiert.
-+ Die Detailansicht der Lunchmenüs soll dynamisch in die View der Übersicht der Lunchmenüs integriert werden.
++ Die Detailansicht der Lunchmenüs wird dynamisch in die View der Übersicht der Lunchmenüs integriert.
 + Es wird eine Bannerfunktionalität bereitgestellt, die dynamisch ausgelöst werden soll. Diese weißt den Nutzer auf das Teilen der Anwendung sowie die Möglichkeit zur Umfrage hin.
 + Für Android Geräte werden Pushbenachrichtigungen implementiert. Für iOS ist dies aufgrund der Realisierung als PWA nicht möglich.
-+ Die Anwendung soll lokal gecached werden, damit sie auch ohne Internetverbindung genutzt werden kann.
++ Die Anwendung wird lokal gecached, damit sie auch ohne Internetverbindung genutzt werden kann.
