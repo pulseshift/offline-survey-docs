@@ -3,7 +3,7 @@
 **Nr.**|**Name**|**Vorgänger**|**Nachfolger**|**Verantwortlich**|**Ist-Dauer**|**Deadline**|**Status**|
 -----|-----|-----|-----|-----|----|---|---|
 1|Einarbeitung| |2 3|Julia/Jan|2h/?|21.03.2018|**closed**|
-2|Datenmodell erarbeiten (Konzept) + mit Daten füllen|1|6|Philipp/Julia|40min/240min|21.03.2018|**closed**|
+2|Datenmodell erarbeiten (Konzept) + mit Daten füllen|1|6|Philipp/Julia/Jan|40min/240min/30min|21.03.2018|**closed**|
 3|Komponenten definieren|1|4|Philipp|30min|21.03.2018|**closed**|
 4|Komponenten anlegen (Rahmen  keine Details)|3|5 6 8 9 10 11 13|Phlipp|30min|21.03.2018|**closed**|
 5|Navigation implementieren|4|17|Philipp|120min|04.04.2018|**closed**|
@@ -27,9 +27,9 @@
 18|enable scroll in lunch list|Philipp|30min|**closed**|
 19|Erweiterung des Lunchmenüs|Julia|45min|**closed**|
 21|Icons|Philipp|45min|**closed**|
-22|Bugfix Banners||||
+22|Bugfix Banners|Jan|30min|**closed**|
 23|White Screen|Philipp|5min|**closed**|
-24|Word Wrap|Philipp|5min|**closed**|
+24|Word Wrap|Philipp|15min|**closed**|
 25|Keine Zusätze|Philipp|5min|**closed**|
 
 
@@ -49,4 +49,10 @@
 
 - Philipp: 22h 20 min
 - Jan: 16h
+- Julia: 24h 45 min
+
+# Summen Stand 16.04.2018
+
+- Philipp: 22h 30 min
+- Jan: 17h
 - Julia: 24h 45 min
