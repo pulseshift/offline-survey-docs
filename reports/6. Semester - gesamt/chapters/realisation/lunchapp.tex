@@ -36,7 +36,6 @@ Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern mögli
 \subsection{EPK: Ablauf der Anwendung}
 
 \subsection{Architektur}
-<<<<<<< HEAD
 
 \subsection{Komponenten}
 
@@ -67,3 +66,28 @@ Vorab muss jedoch geprüft werden, ob das Endgerät oder auch der benutze Browse
 Wird die Seite aufgerufen und die Push Notification sind technisch möglich wird der Benutzer mit einem Pop-Up darauf hingewiesen, dass er die Möglichkeit hat diese zu erhalten. 
 
 Hat der Benutzer sich dazu entschlossen die Push Notifications einzuschalten, können nun von außen Nachrichten an den Benutzer gesendet werden. Dazu wird die Entwicklungs-Plattform Firesbase genutzt. Mit Hilfe von Firebase können nun die Benachrichtigungen in bestimmten zeitlichen Abständen gesendet werden.
+
+\subsection{Anforderungserfüllung}
+Die im Lasten- und Pflichtenheft beschriebenen Anforderungen konnten weitesgehend erfüllt werden. Im Folgenden wird das finale Produkt mit dem Pflichtenheft verglichen. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{images/docs-comparison}
+\caption[Vergleich des Mockups mit dem finalem Produkt]{Vergleich des Mockups mit dem finalem Produkt}
+\label{fig:mockup-comparison}
+\end{figure}
+
+Während der Beschreibung wird auf\vref{fig:mockup-comparison} Bezug genommen, welches das vom Unternehmen bereitgestellte Mockup mit dem finalen Produkt vergleicht.
+
+\begin{itemize}
+\item Die Umsetzung als \gls{pwa} wurde erfolgreich durchgeführt. Das Design der finalen App kommt dementsprechend nur vom Aufbau, nicht aber vom Aussehen an das Mockup heran. Durch die Umsetzung als Web-Applikationen mussten entsprechende Änderungen vorgenommen werden, was aber durch die Vorgabe, eine\gls{pwa} zu erstellen durchaus so gewollt ist.
+\item Wie in\vref{fig:mockup-comparison} zu sehen, zeigt die App das Menü für die nächsten fünf Tage und verschiedenen Kantinen an. Weiterhin wird der Nutzer wie vorrausgesetzt über Preis und Zusatzstoffe sowie Allergene informiert. Letzteres wird sichtbar, wenn der Nutzer auf ein Menü drückt.
+\item Die Öffnungszeiten sowie eine mögliche Schließung der Kantine wird ebenfalls angezeigt. Im Falle einer Schließung wir dem Nutzer die entsprechende Information gegeben, der Tag ist aber trotzdem auswhälbar.
+\item Umfangreiche Mockdaten wurden erfolgreich erstellt und sind lokal in der App verfügbar. Ein Backendservice wurde nicht gebaut, eine Integration mit beispielsweise Google Firebase ist durch die Struktur der Applikation allerdings kein goßer Aufwand mehr.
+\item Die Umfragefunktionalität von PulseShift wird durch ein iFrame in die App gerendert. Allerdings hat die produktive Version des Servers noch Restriktionen, die eine Einbindung nicht erlauben. Währenddessen diese entfernt werden, wird auf eine lokale Version zurückgegriffen.
+\item Die Umfragefunktionalität ist innerhalb weniger Sekunden austauschbar.
+\item Eine Benutzereingrenzung wurde nicht konkret in die Applikation implementiert, allerdings lässt sich dies durch die Realisation als Web-Applikation über beispielsweise QR-Codes im produktiven Einsatz einfach umsetzen.
+\item Die Detailansicht der einzelnen Menüs ist wie vorgesehen dynamisch in der View implementiert.
+\item Die entsprechende Bannerfunktionalität wurde erfolgreich implementiert. Der Nutzer bekommt für die Demonstrations-Version die Banner mit einer gewissen Wahrscheinlichkeit beim Öffnen der Applikation angezeigt.
+\item Für Google-Software wurden Pushbenachrichtigungen erfolgreich implementiert. Durch Restriktionen seitens Apple kann dies für enstsprechende Geräte allerdings zum heutigen Zeitpunkt nicht realisiert werden. Jedoch ist Apple committed, dies in der Zukunft zu ermöglichen.
+\item Die Anwendung wird wie vorgesehen lokal gecached und kann auf allen Plattformen somit auch Offline vollständig genutzt werden.
+\end{itemize}
