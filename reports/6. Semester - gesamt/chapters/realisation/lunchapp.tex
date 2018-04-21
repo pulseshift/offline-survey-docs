@@ -35,7 +35,34 @@ Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern mögli
 
 \subsection{EPK: Ablauf der Anwendung}
 
+Die Nutzerinteraktion beginnt mit dem Öffnen der \gls{pwa}. Dabei gibt es wie in Abbildung \ref{fig:lunchepk} dargestellt drei verschiedene Möglichkeiten. Zum einen kann es sein, dass ausschließlich das Lunchmenü erscheint, mit dem der Benutzer interagieren kann. Zum anderen können aber auch zusätzlich entweder ein Umfragebanner oder ein Teilen-Banner angezeigt werden. Über das Umfrage-Banner kann der Anwender an der in die Applikation integrierte Umfrage teilnehmen. Das Teilen-Banner ermöglicht es ihm, die Lunchapp per Mail oder über soziale Netzwerke mit seinen Kollegen zu teilen.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{images/lunchapp_epk}
+\caption[EPK der Lunchapp]{EPK der Lunchapp}
+\label{fig:lunchepk}
+\end{figure}
+
+Bezüglich der Interaktion des Nutzers mit dem Lunchmenü stehen ihm drei wesentliche Funktionalitäten zur Verfügung (siehe Abbildung \ref{fig:lunchepkdetail}). Er kann auf eine spezifische Speise klicken und sich Details wie zum Beispiel enthaltene Zusatzstoffe ansehen. Außerdem kann er zwischen verschiedenen Kantinen aber auch Wochentagen wechseln.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{images/lunchapp_epk_detail}
+\caption[Interaktion mit dem Lunchmenü]{EPK der Lunchapp: Interaktion mit dem Lunchmenü}
+\label{fig:lunchepkdetail}
+\end{figure}
+
 \subsection{Architektur}
+
+Abbildung \ref{fig:laarchitecture} zeigt die grobe Architektur der Lunchapp. Die gesamte Anwendung ist auf einem Firebase-Server deployt. Die in der Firebase gespeicherten Daten sind mit dem Model der Vue.js Applikation synchronisiert und werden auf der LunchListView angezeigt. Der Controller übernimmt insbesondere das Routing zwischen LunchListView und SurveyView, zum Beispiel beim Klicken auf das Umfragebanner. In die SurveyView wird die Umfrage vom PulseShift-Server gerendert.   
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/lunchapp_architecture.jpg}
+\caption[Architektur der Lunchapp]{Architektur der Lunchapp}
+\label{fig:laarchitecture}
+\end{figure}
 
 \subsection{Komponenten}
 
@@ -50,6 +77,23 @@ Eine \gls{pwa} ist eine Web-Applikation, die sich der Nutzer über das Speichern
 Da eine \gls{pwa} eine Web-Applikation ist, sind entsprechende Frameworks auszuwählen. In Anbetracht der begrenzten Zeit und mangelnden personellen Ressourcen wurde Vue.js als Framework gewählt. Alternativen wie React.js und Angular.js erscheinen zwar mächtiger, sind aber auch zeitaufwendiger in der Einarbeitung. Zudem lässt sich der begrenzte Umfang der App auch problemlos mit Vue.js realisieren und im Anschluss auch warten.
 
 Um ein möglichst übersichtliches und modernes Design zu erhalten, wird Material Design eingesetzt. Gegenüber Alternativen wie beispielsweise Bootstrap hat es den Vorteil, dass es für mobile Applikationen subjektiv bewertet ein ansprechendes Design bietet. Um eine reibungslose Nutzung von Material Design Komponenten in Vue.js zu ermögichen, wird auf Vuetify zurückgegriffen, welches Material Design in Vue.js implementiert.
+
+\subsubsection{Banner}
+
+Die Banner, die sich direkt über dem eigentlichen Lunchmenü anzeigen lassen, stellen eine zentrale Komponente der Applikation dar. Durch das Umfragebanner (siehe Abbildung \ref{fig:banners}, links) wird der Mitarbeiter auf eine Unternehmensumfrage aufmerksam gemacht und kann mit einem Klick auf $"$Teilnehmen$"$ auf die Survey-View gelangen, auf der er die vom PulseShift-Server geladenen Fragen beantworten kann.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{images/banners}
+\caption[Umfrage- und Teilen-Banner]{Umfrage- und Teilen-Banner}
+\label{fig:banners}
+\end{figure}
+
+Das Teilen-Banner (siehe Abbildung \ref{fig:banners}, rechts) ermöglicht es dem Nutzer, die Applikation mit seinen Kollegen zu teilen. Neben dem Versenden einer E-Mail stehen ihm dabei die sozialen Netzwerke Facebook, LinkedIn und Twitter sowie die Messenger Skype und WhatsApp zur Verfügung.
+
+Die Banner werden dynamisch mithilfe von Conditional Rendering eingebunden und derzeit zufällig beim Öffnen des Lunchmenüs getriggert, wobei das Umfragebanner nur angezeigt wird, wenn der Nutzer online ist. Für den produktiven Einsatz müsste jedoch ein externer Trigger-Mechanismus implementiert werden, der es PulseShift ermöglicht die Umfragen beliebig zu schalten.
+
+
 
 \subsubsection{Push Notification}
 Die Push Notification soll ermöglichen, dass der Benutzer der Progressiven Webapp Benachrichtigungen auf sein beliebiges Endgerät erhält. So kann es ermöglicht werden, die Aufmerksamkeit des Nutzers auf die App und somit auch die Umfrage zu lenken. 
