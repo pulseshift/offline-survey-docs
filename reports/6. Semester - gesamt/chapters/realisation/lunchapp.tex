@@ -2,18 +2,18 @@
 \label{section:realisation:lunchapp}
 
 \subsection{Beschreibung}
-Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern möglichst früh zu nehmen und eine App zu entwickeln, die kontinuierlich von den Mitarbeitern genutzt wird. Während der Nutzung wird der Mitarbeiter gefragt, ob er an einer Umfrage teilnehmen möchte, und kann dies auch direkt aus der App tun. Der Vorteil einer Lunchapp ist hier vor allem, dass es sich um unkritische Daten handelt. Um diesen Punkt zu verdeutlichen, wird eine andere Möglichkeit weiter beleuchtet: Der Dienstplan. Hierbei handelt es sich um datenschutzrechtlich sensible Daten, die keineswegs frei verfügbar gemacht werden dürfen. Dementsprechend wurde für eine prototypische Implementierung eine Lunchapp ausgewählt.
+Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern möglichst früh zu nehmen und eine App zu entwickeln, die kontinuierlich von den Mitarbeitern genutzt wird. Während der Nutzung wird der Mitarbeiter gefragt, ob er an einer Umfrage teilnehmen möchte, und kann dies direkt aus der App tun. Der Vorteil einer Lunchapp ist vor allem, dass es sich um unkritische Daten handelt. Um diesen Punkt zu verdeutlichen, wird eine andere Möglichkeit weiter beleuchtet: Der Dienstplan. Hierbei handelt es sich um datenschutzrechtlich sensible Daten, die keineswegs frei verfügbar gemacht werden dürfen. Dementsprechend wurde für eine prototypische Implementierung eine Lunchapp ausgewählt.
 \subsection{Lastenheft}
 
 \begin{itemize}
 \item Es ist eine mobile Anwendung zu erstellen, die das Lunchmenü für die nächsten 5 Tage anzeigt. Dies beinhaltet den Namen, den Preis sowie die Allergene und Zusatzstoffe der einzelnen Menüs.
 \item Zusätzlich sollen die Öffnungszeiten der Kantine angezeigt werden. 
-\item Außerdem soll es möglich sein zwischen verschiedenen Kantinen zu wählen
+\item Außerdem soll es möglich sein zwischen verschiedenen Kantinen zu wählen.
 \item Wenn die Kantine geschlossen ist, soll diese Information anstelle der Öffnungszeiten und des Lunchmenüs angezeigt werden.
-\item Außerdem soll die Umfragefunktionalität von PulseShift direkt innerhalb der Anwendung zur Verfügung stehen und kein Absprung nötig sein.
+\item Des Weiteren soll die Umfragefunktionalität von PulseShift direkt innerhalb der Anwendung zur Verfügung stehen und kein Absprung nötig sein.
 \item In der Anwendung sollen Banner angezeigt werden können, die den Nutzer zum Teilen der App oder der Teilnahme an einer Umfrage bewegen. Diese sollen in für den Nutzer als zufällig empfundenen Zeitabständen angezeigt werden.
 \item Für die Umfragefunktionalität soll der Benutzer mindestens auf eine Gruppe von Personen eingegrenzt werden können.
-\item Der Nutzer soll von der Anwendung aktiv über die Möglichkeit zur Umfrage sowie Essensangebote informiert werden.
+\item Der Nutzer soll von der Anwendung aktiv über die Möglichkeit zur Umfrage, sowie Essensangebote informiert werden.
 \item Das Design der Anwendung soll sich an den von PulseShift entwickelten und bereitgestellten Mockups orientieren.
 \end{itemize}
 
@@ -24,11 +24,11 @@ Die Idee der Lunchapp ist es, den Medienbruch zu den Offline-Mitarbeitern mögli
 \item Diese ermöglicht das Anzeigen des Lunchs für die nächsten 5 Tage mit dem Namen, dem Preis sowie den Allergenen und Zusatzstoffen der einzelnen Menüs. 
 \item Außerdem werden die Öffnungszeiten sowie eine mögliche Schließung der Kantine angezeigt.
 \item Die Daten zum Lunchmenü und den Öffnungszeiten werden lokal und hart kodiert in einer JSON Datei gemockt. Eine Anbindung an einen Datenserver erfolgt nicht. 
-\item Die Umfragefunktionalität die von PulseShift entwickelt wurde, wird in die Anwendung hineingerendert werden. Das Anzeigen der Umfrage wird nicht selbst implementiert. 
+\item Die Umfragefunktionalität, die von PulseShift entwickelt wurde, wird in die Anwendung hineingerendert werden. Das Anzeigen der Umfrage wird nicht selbst implementiert. 
 \item Der Server für die Umfragefunktionalität wird austauschbar sein. Damit ist gemeint, dass die URL beliebig definierbar ist.
 \item Die Benutzereingrenzung wird nach einer Absprache mit PulseShift über die konkrete gewünschte Ausprägung implementiert.
-\item Die Detailansicht der Lunchmenüs wird dynamisch in die View der Übersicht der Lunchmenüs integriert.
-\item Es wird eine Bannerfunktionalität bereitgestellt, die dynamisch ausgelöst werden soll. Diese weißt den Nutzer auf das Teilen der Anwendung sowie die Möglichkeit zur Umfrage hin.
+\item Die Detailansicht der Lunchmenüs wird dynamisch in die View der Übersicht des Lunchmenüs integriert.
+\item Es wird eine Bannerfunktionalität bereitgestellt, die dynamisch ausgelöst werden soll. Diese weißt den Nutzer auf das Teilen der Anwendung, sowie die Möglichkeit zur Umfrage hin.
 \item Für Android Geräte werden Pushbenachrichtigungen implementiert. Für iOS ist dies aufgrund der Realisierung als \gls{pwa} nicht möglich.
 \item Die Anwendung wird lokal gecached, damit sie auch ohne Internetverbindung genutzt werden kann.
 \end{itemize}
@@ -44,7 +44,7 @@ Die Nutzerinteraktion beginnt mit dem Öffnen der \gls{pwa}. Dabei gibt es wie i
 \label{fig:lunchepk}
 \end{figure}
 
-Bezüglich der Interaktion des Nutzers mit dem Lunchmenü stehen ihm drei wesentliche Funktionalitäten zur Verfügung (siehe Abbildung \ref{fig:lunchepkdetail}). Er kann auf eine spezifische Speise klicken und sich Details wie zum Beispiel enthaltene Zusatzstoffe ansehen. Außerdem kann er zwischen verschiedenen Kantinen aber auch Wochentagen wechseln.
+Bezüglich der Interaktion des Nutzers mit dem Lunchmenü stehen ihm drei wesentliche Funktionalitäten zur Verfügung (siehe Abbildung \ref{fig:lunchepkdetail}). Er kann auf eine spezifische Speise klicken und sich Details, wie zum Beispiel enthaltene Zusatzstoffe ansehen. Außerdem kann er zwischen verschiedenen Kantinen, aber auch Wochentagen, wechseln.
 
 \begin{figure}[H]
 \centering
@@ -70,11 +70,11 @@ Im Folgenden werden grundlegende architektonische Entscheidungen gelistet und je
 
 Zunächst wurde sich für eine \gls{pwa} entschieden, und gegen eine Umsetzung als hybride Applikation. Um diese Entscheidung ausreichend begründen zu können, werden beide Technologien kurz vorgestellt.
 
-Eine hybride Applikation ist eine native App, die aber mit Web-Technologien umgesetzt wird. Dies bedeutet, dass die Web-App in einem nativen Container ausgeführt wird und auch über einige native Funktionen verfügen kann. Nachteilig wirkt sich diese Technologie vor allem bei der Performance und der User Experience aus. Der Nutzer wird ein berichten, dass sich die Applikation unecht anfühlt, und gerade bei größeren Datenmengen und anspruchsvollen Routinen auch langsam wird. Allerdings brauch der Anbieter die App zum größten Teil nur einmal entwickeln und kann sie mit wenig Anpassungen auf allen Plattformen anbieten. Auch wenn diese Technologie vielversprechend sein mag, ist eine \gls{pwa} für den vorliegenden Anwendungsfall die bessere Wahl.
+Eine hybride Applikation ist eine native App, die aber mit Web-Technologien umgesetzt wird. Dies bedeutet, dass die Web-App in einem nativen Container ausgeführt wird und auch über einige native Funktionen verfügen kann. Nachteilig wirkt sich diese Technologie vor allem bei der Performance und der User Experience aus. Nutzer berichten, dass sich die Applikation unecht anfühlt, und gerade bei größeren Datenmengen und anspruchsvollen Routinen langsam wird. Allerdings brauch der Anbieter die App zum größten Teil nur einmal entwickeln und kann sie mit wenig Anpassungen auf allen Plattformen anbieten. Auch wenn diese Technologie vielversprechend sein mag, ist eine \gls{pwa} für den vorliegenden Anwendungsfall die bessere Wahl.
 
-Eine \gls{pwa} ist eine Web-Applikation, die sich der Nutzer über das Speichern auf dem Home-Screen lokal abspeichern kann. Durch sogenannte Service-Worker können zudem eingeschränkt auch native Funktionalitäten genutzt werden, zum Beispiel das Senden von Push-Benachrichtigungen sowie das Cachen von Daten, und die daraus resultierende Offline-Nutzbarkeit. Für den vorliegenden Use-Case sind eben genau diese beiden Funktionalitäten ausreichend. Weiterhin wird die App über einen beliebigen Browser installiert, und muss nicht über den jeweiligen App-Store heruntergeladen werden. Das erhöht die Adaption der App und erleichtert den Unternehmen die Verteilung, da die für native Applikation notwendige Infrastruktur nicht vorhanden seinm muss.
+Eine \gls{pwa} ist eine Web-Applikation, die sich der Nutzer über das Speichern auf dem Home-Screen lokal abspeichern kann. Durch sogenannte Service-Worker können zudem eingeschränkt native Funktionalitäten genutzt werden, zum Beispiel das Senden von Push-Benachrichtigungen, sowie das Cachen von Daten, und die daraus resultierende Offline-Nutzbarkeit. Für den vorliegenden Use-Case sind eben genau diese beiden Funktionalitäten ausreichend. Weiterhin wird die App über einen beliebigen Browser installiert, und muss nicht über den jeweiligen App-Store heruntergeladen werden. Das erhöht die Adaption der App und erleichtert den Unternehmen die Verteilung, da die für native Applikation notwendige Infrastruktur nicht vorhanden sein muss.
 
-Da eine \gls{pwa} eine Web-Applikation ist, sind entsprechende Frameworks auszuwählen. In Anbetracht der begrenzten Zeit und mangelnden personellen Ressourcen wurde Vue.js als Framework gewählt. Alternativen wie React.js und Angular.js erscheinen zwar mächtiger, sind aber auch zeitaufwendiger in der Einarbeitung. Zudem lässt sich der begrenzte Umfang der App auch problemlos mit Vue.js realisieren und im Anschluss auch warten.
+Da eine \gls{pwa} eine Web-Applikation ist, sind entsprechende Frameworks auszuwählen. In Anbetracht der begrenzten Zeit und mangelnden personellen Ressourcen wurde Vue.js als Framework gewählt. Alternativen wie React.js und Angular.js erscheinen zwar mächtiger, sind aber auch zeitaufwendiger in der Einarbeitung. Zudem lässt sich der begrenzte Umfang der App auch problemlos mit Vue.js realisieren und im Anschluss warten.
 
 Um ein möglichst übersichtliches und modernes Design zu erhalten, wird Material Design eingesetzt. Gegenüber Alternativen wie beispielsweise Bootstrap hat es den Vorteil, dass es für mobile Applikationen subjektiv bewertet ein ansprechendes Design bietet. Um eine reibungslose Nutzung von Material Design Komponenten in Vue.js zu ermögichen, wird auf Vuetify zurückgegriffen, welches Material Design in Vue.js implementiert.
 
@@ -89,14 +89,14 @@ Die Banner, die sich direkt über dem eigentlichen Lunchmenü anzeigen lassen, s
 \label{fig:banners}
 \end{figure}
 
-Das Teilen-Banner (siehe Abbildung \ref{fig:banners}, rechts) ermöglicht es dem Nutzer, die Applikation mit seinen Kollegen zu teilen. Neben dem Versenden einer E-Mail stehen ihm dabei die sozialen Netzwerke Facebook, LinkedIn und Twitter sowie die Messenger Skype und WhatsApp zur Verfügung.
+Das Teilen-Banner (siehe Abbildung \ref{fig:banners}, rechts) ermöglicht es dem Nutzer, die Applikation mit seinen Kollegen zu teilen. Neben dem Versenden einer E-Mail stehen ihm dabei die sozialen Netzwerke Facebook, LinkedIn und Twitter, sowie die Messenger Skype und WhatsApp zur Verfügung.
 
 Die Banner werden dynamisch mithilfe von Conditional Rendering eingebunden und derzeit zufällig beim Öffnen des Lunchmenüs getriggert, wobei das Umfragebanner nur angezeigt wird, wenn der Nutzer online ist. Für den produktiven Einsatz müsste jedoch ein externer Trigger-Mechanismus implementiert werden, der es PulseShift ermöglicht die Umfragen beliebig zu schalten.
 
 
 
 \subsubsection{Push Notification}
-Die Push Notification soll ermöglichen, dass der Benutzer der Progressiven Webapp Benachrichtigungen auf sein beliebiges Endgerät erhält. So kann es ermöglicht werden, die Aufmerksamkeit des Nutzers auf die App und somit auch die Umfrage zu lenken. 
+Die Push Notification soll ermöglichen, dass der Benutzer der \gls{pwa} Benachrichtigungen auf sein beliebiges Endgerät erhält. So kann es ermöglicht werden, die Aufmerksamkeit des Nutzers auf die App und somit auch die Umfrage zu lenken. 
 
 Vorab muss jedoch geprüft werden, ob das Endgerät oder auch der benutze Browser die Push Notifications unterstützen. 
 
@@ -112,7 +112,7 @@ Wird die Seite aufgerufen und die Push Notification sind technisch möglich wird
 Hat der Benutzer sich dazu entschlossen die Push Notifications einzuschalten, können nun von außen Nachrichten an den Benutzer gesendet werden. Dazu wird die Entwicklungs-Plattform Firesbase genutzt. Mit Hilfe von Firebase können nun die Benachrichtigungen in bestimmten zeitlichen Abständen gesendet werden.
 
 \subsection{Anforderungserfüllung}
-Die im Lasten- und Pflichtenheft beschriebenen Anforderungen konnten weitesgehend erfüllt werden. Im Folgenden wird das finale Produkt mit dem Pflichtenheft verglichen. 
+Die im Lasten- und Pflichtenheft beschriebenen Anforderungen konnten weitestgehend erfüllt werden. Im Folgenden wird das finale Produkt mit dem Pflichtenheft verglichen. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\textwidth]{images/docs-comparison}
@@ -123,15 +123,15 @@ Die im Lasten- und Pflichtenheft beschriebenen Anforderungen konnten weitesgehen
 Während der Beschreibung wird auf\vref{fig:mockup-comparison} Bezug genommen, welches das vom Unternehmen bereitgestellte Mockup mit dem finalen Produkt vergleicht.
 
 \begin{itemize}
-\item Die Umsetzung als \gls{pwa} wurde erfolgreich durchgeführt. Das Design der finalen App kommt dementsprechend nur vom Aufbau, nicht aber vom Aussehen an das Mockup heran. Durch die Umsetzung als Web-Applikationen mussten entsprechende Änderungen vorgenommen werden, was aber durch die Vorgabe, eine\gls{pwa} zu erstellen durchaus so gewollt ist.
-\item Wie in\vref{fig:mockup-comparison} zu sehen, zeigt die App das Menü für die nächsten fünf Tage und verschiedenen Kantinen an. Weiterhin wird der Nutzer wie vorrausgesetzt über Preis und Zusatzstoffe sowie Allergene informiert. Letzteres wird sichtbar, wenn der Nutzer auf ein Menü drückt.
-\item Die Öffnungszeiten sowie eine mögliche Schließung der Kantine wird ebenfalls angezeigt. Im Falle einer Schließung wir dem Nutzer die entsprechende Information gegeben, der Tag ist aber trotzdem auswhälbar.
-\item Umfangreiche Mockdaten wurden erfolgreich erstellt und sind lokal in der App verfügbar. Ein Backendservice wurde nicht gebaut, eine Integration mit beispielsweise Google Firebase ist durch die Struktur der Applikation allerdings kein goßer Aufwand mehr.
+\item Die Umsetzung als \gls{pwa} wurde erfolgreich durchgeführt. Das Design der finalen App kommt dementsprechend nur vom Aufbau, nicht aber vom Aussehen an das Mockup heran. Durch die Umsetzung als Web-Applikationen mussten entsprechende Änderungen vorgenommen werden, was aber durch die Vorgabe, eine\gls{pwa} zu erstellen durchaus gewollt ist.
+\item Wie in\vref{fig:mockup-comparison} zu sehen, zeigt die App das Menü für die nächsten fünf Tage und verschiedenen Kantinen an. Weiterhin wird der Nutzer, wie vorausgesetzt über Preis und Zusatzstoffe, sowie Allergene informiert. Letzteres wird sichtbar, wenn der Nutzer auf ein Menü drückt.
+\item Die Öffnungszeiten, sowie eine mögliche Schließung der Kantine wird ebenfalls angezeigt. Im Falle einer Schließung wir dem Nutzer die entsprechende Information gegeben, der Tag ist aber trotzdem auswählbar.
+\item Umfangreiche Mockdaten wurden erfolgreich erstellt und sind lokal in der App verfügbar. Ein Backendservice wurde nicht gebaut, eine Integration mit beispielsweise Google Firebase ist durch die Struktur der Applikation allerdings kein großer Aufwand mehr.
 \item Die Umfragefunktionalität von PulseShift wird durch ein iFrame in die App gerendert. Allerdings hat die produktive Version des Servers noch Restriktionen, die eine Einbindung nicht erlauben. Währenddessen diese entfernt werden, wird auf eine lokale Version zurückgegriffen.
 \item Die Umfragefunktionalität ist innerhalb weniger Sekunden austauschbar.
 \item Eine Benutzereingrenzung wurde nicht konkret in die Applikation implementiert, allerdings lässt sich dies durch die Realisation als Web-Applikation über beispielsweise QR-Codes im produktiven Einsatz einfach umsetzen.
 \item Die Detailansicht der einzelnen Menüs ist wie vorgesehen dynamisch in der View implementiert.
-\item Die entsprechende Bannerfunktionalität wurde erfolgreich implementiert. Der Nutzer bekommt für die Demonstrations-Version die Banner mit einer gewissen Wahrscheinlichkeit beim Öffnen der Applikation angezeigt.
-\item Für Google-Software wurden Pushbenachrichtigungen erfolgreich implementiert. Durch Restriktionen seitens Apple kann dies für enstsprechende Geräte allerdings zum heutigen Zeitpunkt nicht realisiert werden. Jedoch ist Apple committed, dies in der Zukunft zu ermöglichen.
-\item Die Anwendung wird wie vorgesehen lokal gecached und kann auf allen Plattformen somit auch Offline vollständig genutzt werden.
+\item Die entsprechende Bannerfunktionalität wurde erfolgreich implementiert. Der Nutzer bekommt für die Demo-Version die Banner mit einer gewissen Wahrscheinlichkeit beim Öffnen der Applikation angezeigt.
+\item Für Google-Software wurden Pushbenachrichtigungen erfolgreich implementiert. Durch Restriktionen seitens Apple kann dies für entsprechende Geräte allerdings zum heutigen Zeitpunkt nicht realisiert werden. Jedoch ist Apple committed, dies in der Zukunft zu ermöglichen.
+\item Die Anwendung wird wie vorgesehen lokal gecached und kann auf allen Plattformen, somit auch Offline, vollständig genutzt werden.
 \end{itemize}
