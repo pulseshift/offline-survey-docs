@@ -1,8 +1,34 @@
 \section{Captive Portal - Proof of Concept}
 \label{section:realisation:captive_portal}
 \subsection{Lastenheft}
+Nach dem Treffen mit PulseShift am 08.03 wurde ein Lastenheft mit den folgenden Punkten ausgearbeitet:
+\begin{itemize}
+\item Es soll ein Captive Portal innerhalb eines WLAN Netzwerks eingerichtet werden, das die Nutzer optional zu einer Umfrage weiterleiten kann.
+\item Es sollen mehrere Hardwarelösungen mit Captive Portal Funktionalität, wie ein Raspberry Pi, ein Router oder ein Accesspoint, untersucht werden. 
+\item Dabei sollen Hersteller-agnostische Lösungen gefunden werden.
+\item Anschließend soll das Captive Portal durch genau eine der untersuchten Hardwarelösungen realisiert werden.
+\item Die dabei benötigte Hardware soll unter Absprache mit Pulseshift von Pulseshift organisiert werden.
+\item Der Nutzer, der ein Endgerät mit dem erzeugten WLAN Netzwerk verbindet, soll über die Möglichkeit zur Teilnahme an einer Umfrage informiert, jedoch nicht gezwungen werden.
+\item Durch einen Redirect soll der Nutzer direkt zu einer Umfrageseite gelangen, die die Fragebögen von Pulseshift beinhaltet.
+\item Die Fragebögen von Pulseshift sollen entweder lokal auf der Hardwarelösung gespeichert sein oder über das Internet direkt angesteuert werden.
+\end{itemize}
 
 \subsection{Pflichtenheft}
+Anhand des zuvor erarbeiteten Lastenhefts wurde anschließend ein Pflichtenheft mit folgendem Inhalt erstellt:
+\begin{itemize}
+\item Es werden Hardwarelösungen mit Captive Portal Funktionalität untersucht.
+\item Dabei werden Router, Accesspoints und Rasbperry Pis genauer behandelt.
+\item Die Anwendungsmöglichkeiten, Vor- & Nachteile der einzelnen Komponenten wird erarbeitet.
+\item Als weiteres Auswahlkriterium wird überprüft ob eine entsprechende Lösung unabhängig vom Hersteller der Hardware erfolgen kann.
+\item Unter Absprache mit Pulseshift wird eine entsprechende Hardwarelösung von Pulseshift bereitgestellt.
+\item Die gegebene Hardwarelösung wird ein WLAN Netzwerk erzeugen, indem sich Nutzer, die sich in unmittelbarer Nähe befinden, mit ihren Endgeräten anmelden können.
+\item Ein Nutzer, der in diesem Netzwerk angemeldet ist, wird über die freiwillige Teilnahmemöglichkeit an einer Umfrage von Pulseshift informiert.
+\item Diese Information wird in Form eines Popups auf dem entsprechenden Endgerät erscheinen.
+\item Das Popup wird zwei Optionen beinhalten, die Option zur Umfrage zu gelangen und die Option nicht an der Umfrage teilzunehmen.
+\item Erstere Option wird entweder per Internet direkt zu der von Pulseshift gehosteten Umfrage führen oder eine auf der Hardwarelösung lokal gespeicherte Kopie der Fragebögen anzeigen.
+\item Insofern die Umfrage lokal gespeichert ist und kein Internetzugang vorhanden ist, werden die angegebenen Antworten und Informationen des Nutzers ebenfalls lokal gespeichert.
+\item Die zweite Option wird das Popup schließen.
+\end{itemize}
 
 \subsection{EPK: Ablauf der Anwendung}
 
