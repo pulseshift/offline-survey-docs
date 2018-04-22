@@ -4,6 +4,8 @@
 *.aux
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls
 *.glg
 *.glo
 *.gz
@@ -20,3 +22,6 @@
 *.syi
 *.toc
 *.url
+
+.DS_Store
+.Rhistory
