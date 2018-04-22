@@ -16,7 +16,7 @@ Der Raspberry Pi soll die Funktionalität eines Captive Portals für Umfragen ve
 \item SD Karte
 \end{itemize}
 
-Da der Raspberry Pi 3 bereits ein WLAN-Empfänger eingebaut hat, wird kein zusätzlicher - etwa über USB - benötigt. Zunächst muss das Betriebssystem Raspbian Stretch auf dem Raspberry Pi  installiert werden. Hierfür kann beispielsweise das Installationsprogramm \textit{NOOBS} genutzt werden, das über einen Computer auf die SD Karte gespielt wird. Anschließend erfolgt die Installation und die Aktualisierung des Betriebssystems durch \textit{apt-get update} und \textit{apt-get upgrade}.
+Da der Raspberry Pi 3 bereits einen WLAN-Empfänger eingebaut hat, wird kein zusätzlicher - etwa über USB - benötigt. Zunächst muss das Betriebssystem Raspbian Stretch auf dem Raspberry Pi  installiert werden. Hierfür kann beispielsweise das Installationsprogramm \textit{NOOBS} genutzt werden, das über einen Computer auf die SD Karte gespielt wird. Anschließend erfolgt die Installation und die Aktualisierung des Betriebssystems durch \textit{apt-get update} und \textit{apt-get upgrade}.
 
 \subsubsection*{Anleitung 1 - Captive Portal ohne Internet}
 Um das Captive Portal einzurichten, wird zunächst der Ansatz ohne Internetverbindung, also mit einer lokal gehosteten Webseite, gewählt. Hierfür wird der unter \textit{https://brennanhm.ca/knowledgebase/2016/10/raspberry-pi-access-point-and-captive-portal-without-internet/} zu findenden Anleitung gefolgt. Hierbei müssen auf dem Raspberry Pi die Pakete \textit{hostapd} und \textit{dnsmasq} installiert werden.
