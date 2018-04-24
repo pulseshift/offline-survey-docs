@@ -5,7 +5,6 @@ Nach dem Treffen mit PulseShift am 08.03.2018 wurde ein Lastenheft mit den folge
 \begin{itemize}
 \item Es soll ein Captive Portal innerhalb eines WLAN Netzwerks eingerichtet werden, das die Nutzer optional zu einer Umfrage weiterleiten kann.
 \item Es sollen mehrere Hardwarelösungen mit Captive Portal Funktionalität, wie ein Raspberry Pi, ein Router oder ein Accesspoint, untersucht werden. 
-\item Dabei sollen Hersteller-agnostische Lösungen gefunden werden.
 \item Anschließend soll das Captive Portal durch genau eine der untersuchten Hardwarelösungen realisiert werden.
 \item Die dabei benötigte Hardware soll unter Absprache mit Pulseshift von Pulseshift organisiert werden.
 \item Der Nutzer, der ein Endgerät mit dem erzeugten WLAN Netzwerk verbindet, soll über die Möglichkeit zur Teilnahme an einer Umfrage informiert, jedoch nicht gezwungen werden.
@@ -22,12 +21,7 @@ Anhand des zuvor erarbeiteten Lastenhefts wurde anschließend ein Pflichtenheft 
 \item Als weiteres Auswahlkriterium wird überprüft, ob eine entsprechende Lösung unabhängig vom Hersteller der Hardware erfolgen kann.
 \item Unter Absprache mit Pulseshift wird eine entsprechende Hardwarelösung von Pulseshift bereitgestellt.
 \item Die gegebene Hardwarelösung wird ein WLAN Netzwerk erzeugen, indem sich Nutzer, die sich in unmittelbarer Nähe befinden, mit ihren Endgeräten anmelden können.
-\item Ein Nutzer, der in diesem Netzwerk angemeldet ist, wird über die freiwillige Teilnahmemöglichkeit an einer Umfrage von Pulseshift informiert.
-\item Diese Information wird in Form eines Popups auf dem entsprechenden Endgerät erscheinen.
-\item Das Popup wird zwei Optionen beinhalten, die Option zur Umfrage zu gelangen und die Option nicht an der Umfrage teilzunehmen.
-\item Erstere Option wird entweder per Internet direkt zu der von Pulseshift gehosteten Umfrage führen oder eine auf der Hardwarelösung lokal gespeicherte Kopie der Fragebögen anzeigen.
-\item Insofern die Umfrage lokal gespeichert ist und kein Internetzugang vorhanden ist, werden die angegebenen Antworten und Informationen des Nutzers ebenfalls lokal gespeichert.
-\item Die zweite Option wird das Popup schließen.
+\item Nach dem Anmelden erfolgt eine Weiterleitung zur lokal gehosteten oder über das Internet erreichbaren Umfrageseite.
 \end{itemize}
 
 
@@ -71,7 +65,7 @@ Um das Captive Portal einzurichten, wird zunächst der Ansatz ohne Internetverbi
 
 Das Paket \textit{hostapd} ermöglicht es, dass der WLAN-Empfänger als Access Point dienen kann, also Verbindungen von anderen Endgeräten annimmt. Bei dem Paket \textit{dnsmasq} handelt es sich um einen einfach zu konfigurierenden DNS- und DHCP-Server. Für beide Pakete müssen anschließend weitere Konfigurationen durchgeführt werden.
 
-Das letzte Paket \textit{nginx} bietet einen Webserver, der für das lokale Hosting der Umfrage-Seite genutzt wird. Die in der Anleitung vorgeschlagene \textit{nginx}-Konfiguration wird um das rewrite-Statement für den /feedback/ Pfad ergänzt. In dem Block für den /generate\_204 Pfad können URL-Parameter mitzurückgegeben werden. Diese werden auch auf Android und auf Windows Endgeräten genutzt, bei iOS hingegen funktioniert dies nicht. Aus diesem Grund wurden diese URL-Parameter, nach unterschiedlichen Versuchen, nginx richtig zu konfigurieren, direkt in der JavaScript-Datei der Umfrage-Webseite festgelegt. Der Nutzer wird ebenfalls auf die Umfrageseite weitergeleitet, wenn er eine beliebige URL in seinen Browser eingibt.
+Das letzte Paket \textit{nginx} bietet einen Webserver, der für das lokale Hosting der Umfrage-Seite genutzt wird. Die in der Anleitung vorgeschlagene \textit{nginx}-Konfiguration wird um ein von der Umfrageseite benötigtes rewrite-Statement für den Pfad /feedback/ ergänzt. In dem Block für den /generate\_204 Pfad können URL-Parameter mitzurückgegeben werden. Diese werden auch auf Android und auf Windows Endgeräten genutzt, bei iOS hingegen funktioniert dies nicht. Aus diesem Grund wurden diese URL-Parameter, nach unterschiedlichen Versuchen, nginx richtig zu konfigurieren, direkt in der JavaScript-Datei der Umfrage-Webseite festgelegt. Der Nutzer wird ebenfalls auf die Umfrageseite weitergeleitet, wenn er eine beliebige URL in seinen Browser eingibt.
 
 Das Captive Portal des Raspberry Pi funktioniert mit dieser Anleitung problemlos auf Windows-Computern, iOS-Endgeräten und den meisten Android-Engeräten. Lediglich bei Samsung-Smartphones öffnet sich der Pop-up zum Anmelden am WLAN nicht. Der Grund hierfür ist nicht klar, könnte jedoch möglicherweise durch eine andere dnsmasq- oder nginx-Konfiguration behoben werden.
 
@@ -92,8 +86,8 @@ Auch für diese Anleitungen wurden Shell Skripte umgesetzt. Diese können mit \t
 Die Umsetzung des Captive Portals mithilfe des Raspberry Pi dient in erster Linie zur Veranschaulichung der Möglichkeit, die Umfrage in dieser Form umzusetzen. Sollte eine der Lösungen des Raspberry Pi tatsächlich in einem produktiven Umfeld genutzt werden, sind folgende Aspekte zu beachten:
 \begin{itemize}
 \item Es sollte ein externer WLAN-Empfänger genutzt werden, da der in dem Raspberry Pi eingebaute Empfänger vermutlich eine zu geringe Signalstärke hat. In diesem Fall müssten die Konfigurationen entsprechend angepasst werden. Gleichzeitig muss überprüft werden, wie viel Verbindungen gleichzeitig unterstützt werden können.
-\item Das Problem der automatischen Pop-ups bei Samsung Handys muss behoben werden, das Problem liegt womöglich an der DNS-Auflösung oder der zurückgegebenen Status-Codes.
-\item Die Anleitungen müssen vertieft auf die Aspekte Sicherheit und Performance überprüft werden, möglicherweise auch eine SSL-Verschlüsselung eingerichtet werden. Die Lösungen sollten in der bestehenden Form noch nicht produktiv genutzt werden, da Sicherheitsrisiken bestehen, die insbesondere bei der zweiten, längerfristigen Lösung mit Internetzugang gefährlich sind.
+\item Das Problem der automatischen Pop-ups bei Samsung Handys muss behoben werden; es liegt womöglich an der DNS-Auflösung oder der zurückgegebenen Status-Codes.
+\item Die Anleitungen müssen vertieft auf die Aspekte Sicherheit und Performance überprüft und möglicherweise auch eine SSL-Verschlüsselung eingerichtet werden. Die Lösungen sollten in der bestehenden Form noch nicht produktiv genutzt werden, da Sicherheitsrisiken bestehen, die insbesondere bei der zweiten, längerfristigen Lösung mit Internetzugang gefährlich sind.
 
 \end{itemize}
 
@@ -102,15 +96,13 @@ Neben der Verwendung des Raspberry Pi gibt es verschiedene Hardware- und Softwar
 
 Bietet ein Unternehmen seinen Mitarbeitern einen WLAN-Internetzugang an, so wird dieser meist über zentral verwaltete Access Points realisiert. Hier besteht die Möglichkeit, dass der Access Point bereits eine Captive Portal Funktionalität besitzt. Die meiste vorinstallierte Software besitzt jedoch nur die Möglichkeit, eine einfache Webseite zum Akzeptieren der Nutzungsbedingungen anzuzeigen, sodass die eigene Umfrageseite nicht einfach eingebunden werden kann (z.B. nur als Redirect nach dem Akzeptieren der Nutzungsbedingungen). Aus diesem Grund ist es unwahrscheinlich, dass die Umfrageseite als Captive Portal direkt in der Access Point Software eines Unternehmens aktiviert werden kann.
 
-Eine andere Lösung ist es, beispielsweise die Firewall- und Router-Software pfSense vor die Access Points oder bei Gesamtveranstaltungen vor einen eigenen Access Point zu schalten. Diese ermöglicht ebenfalls die Captive Portal-Funktionalität. Der Einsatz ist jedoch in einem Firmennetzwerk er unwahrscheinlich, da ein größerer Eingriff in die Ntzwerkinfrastruktur erforderlich ist.
+Eine andere Lösung ist es, beispielsweise die Firewall- und Router-Software pfSense vor die Access Points oder bei Gesamtveranstaltungen vor einen eigenen Access Point zu schalten. Diese ermöglicht ebenfalls die Captive Portal Funktionalität. Der Einsatz ist jedoch in einem Firmennetzwerk er unwahrscheinlich, da ein größerer Eingriff in die Ntzwerkinfrastruktur erforderlich ist.
 
 Als Alternative könnte auch das Betriebssystem eines kompatiblen Routers durch das auf Linux basierende, weit verbreitete Betriebssystem OpenWRT überschrieben werden, um diesen selbst zu konfigurieren. In diesem Fall ähneln die Konfigurationsarbeiten denen auf dem Raspberry Pi und für die Captive Portal Funktionalität kann eine Software wie nodogsplash, Wifidog oder CoovaChilli genutzt werden.
 
 
+\subsection{Anforderungserfüllung}
+Mit der ausgewählten Hardware - einem Raspberry Pi - wurde das Captive Portal prototypisch eingerichtet. Folglich wurden die zentralen Anforderungen des Lasten- und Pflichtenhefts erfüllt. Die verwendeten Lösungsansätze können somit als Demo, für praktische Tests (zur Einschätzung, ob dieser Umfragekanal geeignet ist) und als Grundlage für eine spätere produktive Nutzung dienen. Zudem wurden mögliche Probleme, wie etwa die Verwendung von Samsung Endgeräten, aufgedeckt.
 
-
-\subsubsection{Anforderungserfüllung}
-Die zentralen Anforderungen des Lasten- und Pflichtenhefts wurden erfüllt. Mit der ausgewählten Hardware - einem Raspberry Pi - wurde das Captive Portal prototypisch eingerichtet. Die verwendeten Lösungsansätze können somit als Demo, für praktische Tests (zur Einschätzung, ob dieser Umfragekanal geeignet ist) und als Grundlage für eine spätere produktive Nutzung dienen. Zudem wurden mögliche Probleme, wie etwa die Verwendung von Samsung Endgeräten, aufgedeckt.
-
-Weniger intensiv wurden hingegen die alternativen Lösungsansätze betrachtet, da diese sehr Hardware-abhängig sind und diese Hardware für eine sinnvolle Einschätzung durch Austesten nicht zur Verfügung stand. Aus diesem Grund wurden diese nur konzeptionell beschrieben.
+Weniger intensiv wurden hingegen die alternativen Lösungsansätze betrachtet, da die Hardware für eine sinnvolle Einschätzung durch Austesten nicht zur Verfügung stand und der Raspberry Pi für eine Veranschaulichung ausreichend ist. Aus diesem Grund wurden diese nur konzeptionell beschrieben.
 
